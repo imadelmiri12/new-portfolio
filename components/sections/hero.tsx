@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Download, Github, Linkedin } from 'lucide-react';
-import { Instagram } from "lucide-react";
+import { ArrowRight, ExternalLink, Github, Linkedin, Mail, Instagram } from 'lucide-react';
 
 export function Hero() {
   const scrollToContact = () => {
@@ -12,129 +11,218 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="min-h-screen bg-gradient-dark flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-      </div>
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+      style={{
+        background: 'linear-gradient(135deg, #0a0e1a 0%, #0d1526 50%, #0a1020 100%)',
+        fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+      }}
+    >
+      {/* Subtle grid overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(#c9a84c 1px, transparent 1px), linear-gradient(90deg, #c9a84c 1px, transparent 1px)`,
+          backgroundSize: '60px 60px',
+        }}
+      />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="animate-slide-left space-y-8">
-            <div className="space-y-4">
-              <p className="text-primary text-lg font-semibold uppercase tracking-wider">Welcome</p>
-              <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
-                <span className="block">Imad</span>
-                <span className="text-primary">Elmiri</span>
-              </h1>
-              <p className="text-2xl md:text-3xl text-secondary font-semibold">Full-Stack Developer & AI/Data Science</p>
+      {/* Soft radial glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] rounded-full opacity-10"
+        style={{ background: 'radial-gradient(ellipse, #c9a84c 0%, transparent 70%)' }}
+      />
+
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="grid lg:grid-cols-5 gap-16 items-center">
+
+          {/* Left Content - takes 3 cols */}
+          <div className="lg:col-span-3 space-y-10">
+            {/* Eyebrow line */}
+            <div className="flex items-center gap-4">
+              <div className="h-px w-12" style={{ background: '#c9a84c' }} />
+              <span
+                className="text-xs font-semibold uppercase tracking-[0.35em]"
+                style={{ color: '#c9a84c', fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Full-Stack Developer · AI Engineer
+              </span>
             </div>
 
-            <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-Full-Stack Developer & AI Student building scalable web applications and data-driven solutions.            </p>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <Button
-                onClick={scrollToContact}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-lg font-semibold flex items-center justify-center gap-2 animate-glow transition-all"
+            {/* Name */}
+            <div>
+              <h1
+                className="font-bold leading-none text-white"
+                style={{ fontSize: 'clamp(3.5rem, 7vw, 6rem)', letterSpacing: '-0.02em' }}
               >
-                Let's Connect <ArrowRight className="w-5 h-5" />
-              </Button>
+                Imad
+                <br />
+                <span style={{ color: '#c9a84c' }}>Elmiri</span>
+              </h1>
+            </div>
+
+            {/* Description */}
+            <p
+              className="text-lg leading-relaxed max-w-xl"
+              style={{ color: '#8a9bb5', fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+            >
+              Building scalable web applications and intelligent data-driven solutions.
+              Bridging the gap between elegant engineering and real-world impact.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button
+                onClick={scrollToContact}
+                className="group flex items-center gap-3 px-8 py-4 font-semibold text-sm uppercase tracking-widest transition-all duration-300"
+                style={{
+                  background: '#c9a84c',
+                  color: '#0a0e1a',
+                  fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: '0.12em',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = '#e0bc6a')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#c9a84c')}
+              >
+                Get In Touch
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
 
               <a
-                href="/imad_elmiri.pdf"
-                download
-                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-8 py-6 text-lg rounded-lg font-semibold flex items-center justify-center gap-2 transition-all hover:shadow-lg hover:scale-105"
+                href="/api/cv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-8 py-4 font-semibold text-sm uppercase tracking-widest transition-all duration-300 border"
+                style={{
+                  color: '#c9a84c',
+                  borderColor: 'rgba(201,168,76,0.4)',
+                  fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: '0.12em',
+                  background: 'transparent',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = 'rgba(201,168,76,0.08)';
+                  e.currentTarget.style.borderColor = '#c9a84c';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)';
+                }}
               >
-                <Download className="w-5 h-5" /> Download CV
+                <ExternalLink className="w-4 h-4" />
+                View CV
               </a>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-8 pt-8 border-t border-border/50">
-              <span className="text-sm text-muted-foreground font-semibold">Follow me</span>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.linkedin.com/in/imad-elmiri-495900335/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-primary/20 hover:bg-primary/40 flex items-center justify-center text-primary transition-all hover:scale-110 hover:shadow-lg"
-                  title="LinkedIn"
+            {/* Divider + Socials */}
+            <div className="pt-8" style={{ borderTop: '1px solid rgba(201,168,76,0.15)' }}>
+              <div className="flex items-center gap-6">
+                <span
+                  className="text-xs uppercase tracking-[0.25em]"
+                  style={{ color: '#4a5568', fontFamily: "'DM Sans', sans-serif" }}
                 >
-                  <Linkedin className="w-6 h-6" />
-                </a>
-
-                <a
-                  href="https://github.com/imadelmiri12"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-secondary/20 hover:bg-secondary/40 flex items-center justify-center text-secondary transition-all hover:scale-110 hover:shadow-lg"
-                  title="GitHub"
-                >
-                  <Github className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://www.instagram.com/imad_elmiri"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-accent/20 hover:bg-accent/40 flex items-center justify-center text-accent transition-all hover:scale-110 hover:shadow-lg"
-                  title="Instagram"
-                 >
-                  <Instagram className="w-6 h-6" />
-                </a>
-
-                <a
-                  href="mailto:imadmiri12@gmail.com"
-                  className="w-12 h-12 rounded-lg bg-accent/20 hover:bg-accent/40 flex items-center justify-center text-accent transition-all hover:scale-110 hover:shadow-lg"
-                  title="Email"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                  </svg>
-                </a>
+                  Connect
+                </span>
+                {[
+                  { href: 'https://www.linkedin.com/in/imad-elmiri-495900335/', icon: <Linkedin className="w-4 h-4" />, label: 'LinkedIn' },
+                  { href: 'https://github.com/imadelmiri12', icon: <Github className="w-4 h-4" />, label: 'GitHub' },
+                  { href: 'https://www.instagram.com/imad_elmiri', icon: <Instagram className="w-4 h-4" />, label: 'Instagram' },
+                  { href: 'mailto:imadmiri12@gmail.com', icon: <Mail className="w-4 h-4" />, label: 'Email' },
+                ].map(({ href, icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith('http') ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    title={label}
+                    className="w-10 h-10 flex items-center justify-center transition-all duration-300 border"
+                    style={{ color: '#6b7fa3', borderColor: 'rgba(107,127,163,0.3)' }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.color = '#c9a84c';
+                      e.currentTarget.style.borderColor = 'rgba(201,168,76,0.6)';
+                      e.currentTarget.style.background = 'rgba(201,168,76,0.06)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.color = '#6b7fa3';
+                      e.currentTarget.style.borderColor = 'rgba(107,127,163,0.3)';
+                      e.currentTarget.style.background = 'transparent';
+                    }}
+                  >
+                    {icon}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Right - Profile Image */}
-          <div className="animate-slide-right flex justify-center">
-            <div className="relative w-full max-w-md">
-              {/* Glowing border effect */}
-              <div className="absolute inset-0 bg-primary rounded-3xl p-1 opacity-30 blur-xl -z-10"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-primary/50 rounded-3xl p-1 opacity-40 blur-lg -z-10"></div>
-              
-              {/* Image container */}
-              <div className="relative rounded-3xl overflow-hidden border-2 border-primary/50 shadow-2xl bg-card">
+          {/* Right - Profile Image takes 2 cols */}
+          <div className="lg:col-span-2 flex justify-center lg:justify-end">
+            <div className="relative">
+              {/* Corner decorations */}
+              <div
+                className="absolute -top-3 -left-3 w-8 h-8 border-t-2 border-l-2"
+                style={{ borderColor: '#c9a84c' }}
+              />
+              <div
+                className="absolute -bottom-3 -right-3 w-8 h-8 border-b-2 border-r-2"
+                style={{ borderColor: '#c9a84c' }}
+              />
+
+              <div
+                className="relative overflow-hidden"
+                style={{
+                  width: '320px',
+                  height: '420px',
+                  border: '1px solid rgba(201,168,76,0.2)',
+                }}
+              >
                 <Image
                   src="/profile.jpg"
-                  alt="Imad Elmiri - Full-Stack Developer"
-                  width={400}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  alt="Imad Elmiri"
+                  fill
+                  className="object-cover"
                   priority
                 />
-                
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                {/* Subtle overlay */}
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(to top, rgba(10,14,26,0.5) 0%, transparent 60%)' }}
+                />
               </div>
 
-              {/* Decorative elements */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '0.5s' }}></div>
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent/40 rounded-full blur-2xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+              {/* Floating badge */}
+              <div
+                className="absolute -bottom-5 -left-8 px-5 py-3"
+                style={{ background: '#0d1526', border: '1px solid rgba(201,168,76,0.3)' }}
+              >
+                <p className="text-xs uppercase tracking-widest" style={{ color: '#c9a84c', fontFamily: "'DM Sans', sans-serif" }}>
+                  Seeking PFA Internship
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-primary">
-        <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="text-xs uppercase tracking-[0.2em]" style={{ color: '#3a4a5e', fontFamily: "'DM Sans', sans-serif" }}>Scroll</span>
+        <div className="w-px h-12 overflow-hidden" style={{ background: 'rgba(201,168,76,0.15)' }}>
+          <div
+            className="w-full h-1/2"
+            style={{
+              background: '#c9a84c',
+              animation: 'scrollLine 1.8s ease-in-out infinite',
+            }}
+          />
+        </div>
+        <style>{`
+          @keyframes scrollLine {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(200%); }
+          }
+        `}</style>
       </div>
     </section>
   );

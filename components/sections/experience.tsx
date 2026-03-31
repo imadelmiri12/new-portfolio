@@ -1,121 +1,168 @@
 'use client'
 
-import { Award } from 'lucide-react'
-
 export function Experience() {
   const experiences = [
     {
       title: '2nd Place - Hackathon WeCreate',
-      organization: 'EMSI Casablanca × AIESEC Maroc',
-      date: 'January 18-19, 2025',
-      description: 'Developed a FinTech application for financial management of Moroccan SMEs. Showcased full-stack development skills and problem-solving abilities.',
+      organization: 'EMSI Casablanca x AIESEC Maroc',
+      date: 'Jan 18-19, 2025',
+      description: 'Developed a FinTech application for financial management of Moroccan SMEs. Showcased full-stack development skills and problem-solving under time constraints.',
       highlights: ['FinTech Application', 'SME Focus', 'Team Collaboration'],
+      type: 'Award',
     },
     {
       title: 'Full-Stack Developer Internship',
-      organization: 'LANAI SARL – Tanger Med',
-      date: 'End of Studies Project',
+      organization: 'LANAI SARL - Tanger Med',
+      date: 'End of Studies',
       description: 'Developed a comprehensive incident management web application with Angular, Java Spring Boot, and MySQL. Implemented user roles, incident workflows, and dynamic dashboards.',
       highlights: ['Angular Frontend', 'Spring Boot Backend', 'Database Design', 'Role-Based Access'],
+      type: 'Internship',
     },
   ]
 
   return (
-    <section id="experience" className="py-20 sm:py-32 relative overflow-hidden bg-gradient-dark">
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-32 right-1/3 w-96 h-96 bg-secondary/15 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-32 left-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-      </div>
+    <section
+      id="experience"
+      className="py-24 sm:py-36 relative overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #0a0e1a 0%, #0d1526 100%)', fontFamily: "'DM Sans', sans-serif" }}
+    >
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)' }} />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-20 animate-slide-up">
-          <p className="text-primary text-lg font-semibold uppercase tracking-wider mb-4">Journey</p>
-          <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-            Professional <span className="text-primary">Experience</span>
+      <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
+        {/* Header */}
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-5">
+            <div className="h-px w-10" style={{ background: '#c9a84c' }} />
+            <span className="text-xs font-semibold uppercase tracking-[0.35em]" style={{ color: '#c9a84c' }}>
+              Journey
+            </span>
+          </div>
+          <h2
+            className="font-bold text-white"
+            style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.02em', fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+          >
+            Experience
           </h2>
-          <div className="h-1 w-24 bg-gradient-vibrant mx-auto rounded-full"></div>
         </div>
 
         {/* Timeline */}
-        <div className="space-y-8 mb-16">
-          {experiences.map((exp, index) => (
-            <div
-              key={exp.title}
-              className="relative pl-8 sm:pl-16 pb-8 border-l-2 border-gradient-vibrant last:pb-0 last:border-l-transparent animate-slide-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Timeline dot with glow */}
-              <div className="absolute left-[-15px] top-0 flex items-center justify-center">
-                <div className="absolute w-10 h-10 rounded-full bg-gradient-vibrant opacity-30 animate-pulse"></div>
-                <div className="relative w-7 h-7 rounded-full bg-primary border-4 border-background flex items-center justify-center shadow-lg">
-                  <Award size={14} className="text-background" />
-                </div>
-              </div>
+        <div className="relative mb-20">
+          {/* Vertical line */}
+          <div
+            className="absolute left-0 top-0 bottom-0 w-px ml-5"
+            style={{ background: 'linear-gradient(to bottom, rgba(201,168,76,0.5), rgba(201,168,76,0.05))' }}
+          />
 
-              {/* Content Card */}
-              <div className="group bg-card/50 backdrop-blur rounded-2xl border border-primary/30 hover:border-primary/60 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-1">
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-vibrant opacity-0 group-hover:opacity-5 transition-opacity rounded-2xl"></div>
+          <div className="space-y-12 pl-16">
+            {experiences.map(({ title, organization, date, description, highlights, type }, index) => (
+              <div key={title} className="relative group">
+                {/* Timeline dot */}
+                <div
+                  className="absolute -left-16 top-1 w-3 h-3 mt-1"
+                  style={{
+                    background: '#c9a84c',
+                    left: '-2.8rem',
+                    boxShadow: '0 0 12px rgba(201,168,76,0.4)',
+                  }}
+                />
 
-                <div className="relative">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                <div
+                  className="p-8 transition-all duration-300"
+                  style={{
+                    background: 'rgba(255,255,255,0.02)',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = 'rgba(201,168,76,0.25)';
+                    e.currentTarget.style.background = 'rgba(201,168,76,0.02)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                  }}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
                     <div>
-                      <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {exp.title}
+                      {/* Type badge */}
+                      <span
+                        className="text-xs uppercase tracking-widest font-semibold mb-3 inline-block"
+                        style={{ color: '#c9a84c' }}
+                      >
+                        {type}
+                      </span>
+                      <h3
+                        className="text-xl font-bold text-white"
+                        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', letterSpacing: '-0.01em' }}
+                      >
+                        {title}
                       </h3>
-                      <p className="text-secondary font-bold text-lg mt-1">
-                        {exp.organization}
+                      <p className="text-sm font-medium mt-1" style={{ color: '#7ba7bc' }}>
+                        {organization}
                       </p>
                     </div>
-                    <span className="text-sm font-bold text-accent bg-accent/20 px-4 py-2 rounded-lg whitespace-nowrap">
-                      {exp.date}
+                    <span
+                      className="text-xs px-4 py-2 whitespace-nowrap self-start"
+                      style={{
+                        color: '#6b7fa3',
+                        border: '1px solid rgba(255,255,255,0.07)',
+                        background: 'rgba(255,255,255,0.02)',
+                      }}
+                    >
+                      {date}
                     </span>
                   </div>
 
-                  <p className="text-muted-foreground mb-6 text-base leading-relaxed">
-                    {exp.description}
+                  <p className="text-sm leading-relaxed mb-6" style={{ color: '#6b7fa3', lineHeight: 1.8 }}>
+                    {description}
                   </p>
 
-                  <div className="flex flex-wrap gap-3">
-                    {exp.highlights.map((highlight) => (
+                  <div className="flex flex-wrap gap-2">
+                    {highlights.map(h => (
                       <span
-                        key={highlight}
-                        className="px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 text-foreground text-xs font-bold rounded-full border border-primary/30 hover:border-primary/60 transition-all"
+                        key={h}
+                        className="text-xs px-3 py-1.5"
+                        style={{
+                          color: '#c9a84c',
+                          border: '1px solid rgba(201,168,76,0.25)',
+                          background: 'rgba(201,168,76,0.05)',
+                        }}
                       >
-                        {highlight}
+                        {h}
                       </span>
                     ))}
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats row */}
+        <div
+          className="grid sm:grid-cols-3 divide-x"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', divideColor: 'rgba(255,255,255,0.06)' }}
+        >
+          {[
+            { value: '4+', label: 'Major Projects' },
+            { value: '2+', label: 'Years Experience' },
+            { value: '🏆', label: 'Award Winning' },
+          ].map(({ value, label }) => (
+            <div key={label} className="py-10 text-center" style={{ borderRight: '1px solid rgba(255,255,255,0.06)' }}>
+              <div
+                className="text-4xl font-bold mb-2"
+                style={{ color: '#c9a84c', fontFamily: "'Cormorant Garamond', serif", letterSpacing: '-0.02em' }}
+              >
+                {value}
+              </div>
+              <p className="text-sm uppercase tracking-widest" style={{ color: '#4a5568', fontFamily: "'DM Sans', sans-serif" }}>
+                {label}
+              </p>
             </div>
           ))}
         </div>
-
-        {/* Achievement Stats */}
-        <div className="grid gap-6 sm:grid-cols-3 animate-slide-up">
-          <div className="group text-center p-8 bg-card/50 backdrop-blur rounded-2xl border border-primary/30 hover:border-primary/60 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20">
-            <div className="text-5xl font-bold text-secondary mb-3 group-hover:scale-110 transition-transform">
-              4+
-            </div>
-            <p className="text-muted-foreground font-semibold">Major Projects</p>
-          </div>
-          <div className="group text-center p-8 bg-card/50 backdrop-blur rounded-2xl border border-secondary/30 hover:border-secondary/60 transition-all duration-300 hover:shadow-xl hover:shadow-secondary/20">
-            <div className="text-5xl font-bold text-secondary mb-3 group-hover:scale-110 transition-transform">
-              2+
-            </div>
-            <p className="text-muted-foreground font-semibold">Years Experience</p>
-          </div>
-          <div className="group text-center p-8 bg-card/50 backdrop-blur rounded-2xl border border-accent/30 hover:border-accent/60 transition-all duration-300 hover:shadow-xl hover:shadow-accent/20">
-            <div className="text-5xl font-bold text-accent mb-3 group-hover:scale-110 transition-transform">
-              🏆
-            </div>
-            <p className="text-muted-foreground font-semibold">Award Winning</p>
-          </div>
-        </div>
       </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent)' }} />
     </section>
   )
 }
