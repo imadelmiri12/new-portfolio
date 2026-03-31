@@ -10,11 +10,9 @@ const sectionStyle = {
 export function About() {
   return (
     <section id="about" className="py-24 sm:py-36 relative overflow-hidden" style={sectionStyle}>
-      {/* Subtle horizontal rule top */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)' }} />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
-        {/* Section Header */}
         <div className="mb-20">
           <div className="flex items-center gap-4 mb-5">
             <div className="h-px w-10" style={{ background: '#c9a84c' }} />
@@ -66,7 +64,6 @@ export function About() {
                 href="/api/cv"
                 target="_blank"
                 rel="noopener noreferrer"
-                download
                 className="flex items-center gap-2 px-7 py-3.5 text-sm font-semibold uppercase tracking-widest transition-all duration-300 border"
                 style={{
                   color: '#c9a84c',
@@ -83,7 +80,7 @@ export function About() {
                   e.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)';
                 }}
               >
-                <ExternalLink size={16} /> Download CV
+                <ExternalLink size={16} /> View CV
               </a>
             </div>
           </div>
@@ -91,10 +88,7 @@ export function About() {
           {/* Right - Cards */}
           <div className="space-y-6">
             {/* Education */}
-            <div
-              className="p-8"
-              style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(201,168,76,0.15)' }}
-            >
+            <div className="p-8" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(201,168,76,0.15)' }}>
               <div className="flex items-center gap-3 mb-8">
                 <span className="text-2xl">📚</span>
                 <h3 className="text-xl font-bold text-white" style={{ letterSpacing: '-0.01em' }}>Education</h3>
@@ -124,20 +118,17 @@ export function About() {
               </div>
             </div>
 
-            {/* Languages */}
-            <div
-              className="p-8"
-              style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(201,168,76,0.15)' }}
-            >
+            {/* Languages - corrected order and levels */}
+            <div className="p-8" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(201,168,76,0.15)' }}>
               <div className="flex items-center gap-3 mb-8">
                 <span className="text-2xl">🌐</span>
                 <h3 className="text-xl font-bold text-white" style={{ letterSpacing: '-0.01em' }}>Languages</h3>
               </div>
               <div className="space-y-5">
                 {[
-                  { lang: 'Arabic', level: 'Native', pct: 100 },
-                  { lang: 'French', level: 'Fluent', pct: 90 },
-                  { lang: 'English', level: 'Intermediate', pct: 65 },
+                  { lang: 'Arabic',  level: 'Native',       pct: 100 },
+                  { lang: 'French',  level: 'Fluent',        pct: 90  },
+                  { lang: 'English', level: 'Intermediate',  pct: 60  },
                 ].map(({ lang, level, pct }) => (
                   <div key={lang}>
                     <div className="flex justify-between items-center mb-2">
@@ -145,10 +136,7 @@ export function About() {
                       <span className="text-xs uppercase tracking-widest" style={{ color: '#c9a84c', fontFamily: "'DM Sans', sans-serif" }}>{level}</span>
                     </div>
                     <div className="h-px w-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
-                      <div
-                        className="h-full"
-                        style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #c9a84c, #e0bc6a)', height: '1px' }}
-                      />
+                      <div style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #c9a84c, #e0bc6a)', height: '1px' }} />
                     </div>
                   </div>
                 ))}

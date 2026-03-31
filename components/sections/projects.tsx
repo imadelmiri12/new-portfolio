@@ -42,6 +42,14 @@ export function Projects() {
       achievements: ['Appointment Booking', 'Doctor Portal', 'Patient Dashboard', 'Notifications'],
       link: null,
     },
+    {
+      index: '06',
+      title: 'Reseau Campus Entreprise',
+      description: 'Conception et simulation d\'un reseau de campus d\'entreprise complet avec routeurs, switches, VLANs et configurations de securite.',
+      technologies: ['Cisco Packet Tracer'],
+      achievements: ['VLAN Config', 'Routing Setup', 'Network Security', 'Campus Topology'],
+      link: null,
+    },
   ]
 
   return (
@@ -81,12 +89,8 @@ export function Projects() {
             >
               {/* Large index number */}
               <div
-                className="absolute top-6 right-8 text-7xl font-bold leading-none select-none transition-opacity duration-300 group-hover:opacity-100"
-                style={{
-                  color: 'rgba(255,255,255,0.03)',
-                  fontFamily: "'Cormorant Garamond', serif",
-                  opacity: 0.5,
-                }}
+                className="absolute top-6 right-8 text-7xl font-bold leading-none select-none"
+                style={{ color: 'rgba(255,255,255,0.03)', fontFamily: "'Cormorant Garamond', serif", opacity: 0.5 }}
               >
                 {index}
               </div>
@@ -106,20 +110,9 @@ export function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1 text-xs font-semibold uppercase tracking-widest transition-all duration-200"
-                      style={{
-                        color: '#c9a84c',
-                        border: '1px solid rgba(201,168,76,0.4)',
-                        background: 'rgba(201,168,76,0.06)',
-                        marginTop: '4px',
-                      }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.background = 'rgba(201,168,76,0.15)';
-                        e.currentTarget.style.borderColor = '#c9a84c';
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.background = 'rgba(201,168,76,0.06)';
-                        e.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)';
-                      }}
+                      style={{ color: '#c9a84c', border: '1px solid rgba(201,168,76,0.4)', background: 'rgba(201,168,76,0.06)', marginTop: '4px' }}
+                      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(201,168,76,0.15)'; e.currentTarget.style.borderColor = '#c9a84c'; }}
+                      onMouseLeave={e => { e.currentTarget.style.background = 'rgba(201,168,76,0.06)'; e.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)'; }}
                     >
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', display: 'inline-block' }} />
                       Live
@@ -133,20 +126,11 @@ export function Projects() {
 
                 {/* Tech Stack */}
                 <div className="mb-6">
-                  <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-3" style={{ color: '#4a5568' }}>
-                    Stack
-                  </p>
+                  <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-3" style={{ color: '#4a5568' }}>Stack</p>
                   <div className="flex flex-wrap gap-2">
                     {technologies.map(tech => (
-                      <span
-                        key={tech}
-                        className="text-xs px-3 py-1.5"
-                        style={{
-                          color: '#c9a84c',
-                          border: '1px solid rgba(201,168,76,0.2)',
-                          background: 'rgba(201,168,76,0.04)',
-                        }}
-                      >
+                      <span key={tech} className="text-xs px-3 py-1.5"
+                        style={{ color: '#c9a84c', border: '1px solid rgba(201,168,76,0.2)', background: 'rgba(201,168,76,0.04)' }}>
                         {tech}
                       </span>
                     ))}
@@ -155,20 +139,11 @@ export function Projects() {
 
                 {/* Features */}
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-3" style={{ color: '#4a5568' }}>
-                    Key Features
-                  </p>
+                  <p className="text-xs uppercase tracking-[0.2em] font-semibold mb-3" style={{ color: '#4a5568' }}>Key Features</p>
                   <div className="flex flex-wrap gap-2">
                     {achievements.map(a => (
-                      <span
-                        key={a}
-                        className="text-xs px-3 py-1.5"
-                        style={{
-                          color: '#7ba7bc',
-                          border: '1px solid rgba(123,167,188,0.2)',
-                          background: 'rgba(123,167,188,0.03)',
-                        }}
-                      >
+                      <span key={a} className="text-xs px-3 py-1.5"
+                        style={{ color: '#7ba7bc', border: '1px solid rgba(123,167,188,0.2)', background: 'rgba(123,167,188,0.03)' }}>
                         {a}
                       </span>
                     ))}
