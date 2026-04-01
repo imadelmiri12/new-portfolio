@@ -127,8 +127,8 @@ export function About() {
               <div className="space-y-5">
                 {[
                   { lang: 'Arabic',  level: 'Native',       pct: 100 },
-                  { lang: 'French',  level: 'Fluent',        pct: 90  },
-                  { lang: 'English', level: 'Intermediate',  pct: 60  },
+                  { lang: 'English',  level: 'Fluent',        pct: 90  },
+                  { lang: 'French', level: 'Intermediate',  pct: 60  },
                 ].map(({ lang, level, pct }) => (
                   <div key={lang}>
                     <div className="flex justify-between items-center mb-2">
