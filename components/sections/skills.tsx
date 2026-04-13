@@ -21,14 +21,20 @@ export function Skills() {
       accent: '#9b8ec4',
     },
     {
-      title: 'Databases',
-      skills: ['MySQL', 'SQL Server', 'UML', 'Database Design'],
+      title: 'Databases & Big Data',
+      skills: ['MySQL', 'SQL Server', 'UML', 'Hadoop/HDFS', 'Apache Kafka', 'Apache Spark', 'Docker'],
       icon: '04',
       accent: '#5a8f7b',
     },
+    {
+      title: 'IoT',
+      skills: ['Node-RED', 'Cisco Packet Tracer', 'MQTT', 'IoT Sensors', 'Smart Home'],
+      icon: '05',
+      accent: '#e07b54',
+    },
   ]
 
-  const additional = ['Web Development', 'API Development', 'RESTful APIs', 'Data Analysis', 'Problem Solving', 'Agile Methodology', 'Team Collaboration', 'Technical Writing']
+  const additional = ['Web Development', 'API Development', 'RESTful APIs', 'Data Analysis', 'Problem Solving', 'Agile Methodology', 'Team Collaboration', 'Technical Writing', 'Streaming', 'Distributed Systems']
 
   return (
     <section
@@ -56,7 +62,7 @@ export function Skills() {
         </div>
 
         {/* Skill Categories */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px mb-16" style={{ background: 'rgba(255,255,255,0.05)' }}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-px mb-16" style={{ background: 'rgba(255,255,255,0.05)' }}>
           {skillCategories.map(({ title, skills, icon, accent }) => (
             <div
               key={title}
