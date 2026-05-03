@@ -11,7 +11,6 @@ import {
   Mail,
   Sparkles,
 } from 'lucide-react'
-import { HeroAnimation } from './HeroAnimation'
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 34, filter: 'blur(12px)' },
