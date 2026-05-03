@@ -58,7 +58,6 @@ export function Footer() {
         fontFamily: "'DM Sans', sans-serif",
       }}
     >
-      <SectionBackground />
 
       {/* Top glowing divider */}
       <motion.div

@@ -110,8 +110,7 @@ export function Contact() {
         fontFamily: "'DM Sans', sans-serif",
       }}
     >
-      
-        <SectionBackground />
+
       {/* animated grid */}
       <motion.div
         className="absolute inset-0 opacity-[0.045]"

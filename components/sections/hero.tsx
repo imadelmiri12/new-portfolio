@@ -90,7 +90,6 @@ export function Hero() {
         fontFamily: "'DM Sans', sans-serif",
       }}
     >
-<SectionBackground />
       {/* Animated luxury grid */}
       <motion.div
         className="absolute inset-0 opacity-[0.055]"

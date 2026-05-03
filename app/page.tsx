@@ -6,20 +6,27 @@ import { Experience } from '@/components/sections/experience'
 import { Contact } from '@/components/sections/contact'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
+import { SectionBackground } from '../components/sections/SectionBackground'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navigation />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
+      <SectionBackground />
+
+      <div className="relative z-10">
+        <Navigation />
+
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Contact />
+        </main>
+
+        <Footer />
+      </div>
     </div>
   )
 }

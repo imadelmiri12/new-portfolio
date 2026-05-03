@@ -78,7 +78,6 @@ export function About() {
 
   return (
     <section id="about" className="relative overflow-hidden py-24 sm:py-36" style={sectionStyle}>
-        <SectionBackground />
       {/* animated background grid */}
       <motion.div
         className="absolute inset-0 opacity-[0.045]"

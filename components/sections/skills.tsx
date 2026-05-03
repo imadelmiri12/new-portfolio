@@ -47,7 +47,6 @@ export function Skills() {
       className="py-24 sm:py-36 relative overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #0d1526 0%, #0a0e1a 100%)', fontFamily: "'DM Sans', sans-serif" }}
     >
-      <SectionBackground />
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)' }} />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
