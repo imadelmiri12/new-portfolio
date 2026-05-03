@@ -1,168 +1,473 @@
 'use client'
+import { SectionBackground } from './SectionBackground'
+import { motion, type Variants } from 'framer-motion'
 
 export function Experience() {
   const experiences = [
     {
+      type: 'Internship',
+      title: 'Full-Stack Developer Internship',
+      organization: 'LANAI SARL - Tanger Med',
+      date: 'Apr 2025 - Jun 2025',
+      location: 'Marrakech, Morocco',
+      description:
+        'Developed a comprehensive incident management web application for TangerMED port with Angular, Java Spring Boot, and MySQL. Implemented role-based access control, incident workflows, and dynamic dashboards.',
+      highlights: [
+        'Angular Frontend',
+        'Spring Boot Backend',
+        'MySQL Database',
+        'Role-Based Access',
+        'Dynamic Dashboards',
+        'TANGERMED',
+      ],
+      image: '/experience/2025_06_16_10_13_IMG_4150.jpg',
+      color: '#7ba7bc',
+    },
+    {
+      type: 'Award',
       title: '2nd Place - Hackathon WeCreate',
       organization: 'EMSI Casablanca x AIESEC Maroc',
       date: 'Jan 18-19, 2025',
-      description: 'Developed a FinTech application for financial management of Moroccan SMEs. Showcased full-stack development skills and problem-solving under time constraints.',
-      highlights: ['FinTech Application', 'SME Focus', 'Team Collaboration'],
-      type: 'Award',
-    },
-    {
-      title: 'Full-Stack Developer Internship',
-      organization: 'LANAI SARL - Tanger Med',
-      date: 'End of Studies',
-      description: 'Developed a comprehensive incident management web application with Angular, Java Spring Boot, and MySQL. Implemented user roles, incident workflows, and dynamic dashboards.',
-      highlights: ['Angular Frontend', 'Spring Boot Backend', 'Database Design', 'Role-Based Access'],
-      type: 'Internship',
+      location: 'Casablanca, Morocco',
+      description:
+        'Built a FinTech application for financial management of Moroccan SMEs within 48 hours. Designed and developed a full-stack solution from scratch under competition pressure. Secured 2nd place out of 10 competing teams.',
+      highlights: [
+        '2nd / 10 Teams',
+        'FinTech App',
+        '48h Build',
+        'React + Spring Boot',
+        'Budget Management',
+      ],
+      image: '/experience/2025_01_19_20_23_IMG_1882.jpg',
+      color: '#c9a84c',
     },
   ]
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 80, scale: 0.96 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  }
+
+  const imageVariants: Variants = {
+    hidden: { scale: 1.12, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  }
+
+  const contentVariants: Variants = {
+    hidden: { opacity: 0, x: 40 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.25,
+        ease: 'easeOut',
+      },
+    },
+  }
 
   return (
     <section
       id="experience"
-      className="py-24 sm:py-36 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0a0e1a 0%, #0d1526 100%)', fontFamily: "'DM Sans', sans-serif" }}
+      className="relative overflow-hidden py-24 sm:py-36"
+      style={{
+        background: 'linear-gradient(180deg, #0a0e1a 0%, #0d1526 100%)',
+        fontFamily: "'DM Sans', sans-serif",
+      }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)' }} />
+      <SectionBackground />
+      {/* Background top line */}
+      <div
+        className="absolute left-0 right-0 top-0 h-px"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)',
+        }}
+      />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
+      {/* Animated background glow */}
+      <motion.div
+        className="absolute left-1/2 top-24 h-72 w-72 rounded-full blur-3xl"
+        style={{
+          background: 'rgba(123,167,188,0.08)',
+          transform: 'translateX(-50%)',
+        }}
+        animate={{
+          scale: [1, 1.25, 1],
+          opacity: [0.35, 0.7, 0.35],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+
+      <motion.div
+        className="absolute bottom-20 right-10 h-80 w-80 rounded-full blur-3xl"
+        style={{ background: 'rgba(201,168,76,0.06)' }}
+        animate={{
+          y: [0, -30, 0],
+          opacity: [0.25, 0.55, 0.25],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
         {/* Header */}
-        <div className="mb-20">
-          <div className="flex items-center gap-4 mb-5">
-            <div className="h-px w-10" style={{ background: '#c9a84c' }} />
-            <span className="text-xs font-semibold uppercase tracking-[0.35em]" style={{ color: '#c9a84c' }}>
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <div className="mb-5 flex items-center gap-4">
+            <motion.div
+              className="h-px w-10 origin-left"
+              style={{ background: '#c9a84c' }}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            />
+            <span
+              className="text-xs font-semibold uppercase tracking-[0.35em]"
+              style={{ color: '#c9a84c' }}
+            >
               Journey
             </span>
           </div>
+
           <h2
             className="font-bold text-white"
-            style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.02em', fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+            style={{
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              letterSpacing: '-0.02em',
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+            }}
           >
             Experience
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Timeline */}
-        <div className="relative mb-20">
-          {/* Vertical line */}
-          <div
-            className="absolute left-0 top-0 bottom-0 w-px ml-5"
-            style={{ background: 'linear-gradient(to bottom, rgba(201,168,76,0.5), rgba(201,168,76,0.05))' }}
-          />
-
-          <div className="space-y-12 pl-16">
-            {experiences.map(({ title, organization, date, description, highlights, type }, index) => (
-              <div key={title} className="relative group">
-                {/* Timeline dot */}
-                <div
-                  className="absolute -left-16 top-1 w-3 h-3 mt-1"
+        {/* Experience Cards */}
+        <div className="space-y-16">
+          {experiences.map(
+            (
+              {
+                type,
+                title,
+                organization,
+                date,
+                location,
+                description,
+                highlights,
+                image,
+                color,
+              },
+              i
+            ) => (
+              <motion.div
+                key={title}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={{
+                  y: -10,
+                  scale: 1.01,
+                  transition: { duration: 0.35 },
+                }}
+                viewport={{ once: true, amount: 0.25 }}
+                className="group relative grid overflow-hidden lg:grid-cols-2"
+                style={{
+                  border: '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: '22px',
+                  minHeight: '520px',
+                  background:
+                    'linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015))',
+                  boxShadow: '0 30px 80px rgba(0,0,0,0.3)',
+                }}
+              >
+                {/* Animated glow border */}
+                <motion.div
+                  className="pointer-events-none absolute -inset-1 opacity-0 group-hover:opacity-100"
                   style={{
-                    background: '#c9a84c',
-                    left: '-2.8rem',
-                    boxShadow: '0 0 12px rgba(201,168,76,0.4)',
+                    borderRadius: '24px',
+                    background: `linear-gradient(120deg, transparent, ${color}55, transparent)`,
+                    filter: 'blur(18px)',
+                  }}
+                  animate={{
+                    x: ['-60%', '60%', '-60%'],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: 'linear',
                   }}
                 />
 
+                {/* Image side */}
                 <div
-                  className="p-8 transition-all duration-300"
-                  style={{
-                    background: 'rgba(255,255,255,0.02)',
-                    border: '1px solid rgba(255,255,255,0.06)',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = 'rgba(201,168,76,0.25)';
-                    e.currentTarget.style.background = 'rgba(201,168,76,0.02)';
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
-                  }}
+                  className={`relative min-h-[520px] overflow-hidden bg-[#0a0e1a] ${
+                    i % 2 === 1 ? 'lg:order-2' : ''
+                  }`}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
-                    <div>
-                      {/* Type badge */}
-                      <span
-                        className="text-xs uppercase tracking-widest font-semibold mb-3 inline-block"
-                        style={{ color: '#c9a84c' }}
-                      >
-                        {type}
-                      </span>
-                      <h3
-                        className="text-xl font-bold text-white"
-                        style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', letterSpacing: '-0.01em' }}
-                      >
-                        {title}
-                      </h3>
-                      <p className="text-sm font-medium mt-1" style={{ color: '#7ba7bc' }}>
-                        {organization}
-                      </p>
-                    </div>
-                    <span
-                      className="text-xs px-4 py-2 whitespace-nowrap self-start"
+                  {/* Decorative background behind contained photo */}
+                  <motion.div
+                    className="absolute inset-0"
+                    style={{
+                      background: `radial-gradient(circle at 50% 45%, ${color}20 0%, rgba(10,14,26,0) 55%)`,
+                    }}
+                    animate={{
+                      scale: [1, 1.08, 1],
+                      opacity: [0.7, 1, 0.7],
+                    }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  />
+
+                  <motion.img
+                    src={image}
+                    alt={title}
+                    variants={imageVariants}
+                    className="absolute inset-0 z-10 h-full w-full"
+                    style={{
+                      objectFit: 'contain',
+                      objectPosition: 'center center',
+                    }}
+                    whileHover={{
+                      scale: 1.04,
+                      transition: { duration: 0.6 },
+                    }}
+                  />
+
+                  {/* Cinematic light sweep */}
+                  <motion.div
+                    className="absolute inset-0 z-20"
+                    style={{
+                      background:
+                        'linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.13) 45%, transparent 65%)',
+                    }}
+                    initial={{ x: '-120%' }}
+                    whileInView={{ x: '120%' }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 1.4,
+                      delay: 0.45,
+                      ease: 'easeInOut',
+                    }}
+                  />
+
+                  {/* Soft overlay */}
+                  <div
+                    className="absolute inset-0 z-30"
+                    style={{
+                      background:
+                        i % 2 === 1
+                          ? 'linear-gradient(270deg, rgba(10,14,26,0.42) 0%, rgba(10,14,26,0.05) 55%, transparent 100%)'
+                          : 'linear-gradient(90deg, rgba(10,14,26,0.42) 0%, rgba(10,14,26,0.05) 55%, transparent 100%)',
+                    }}
+                  />
+
+                  {/* Floating badge */}
+                  <motion.div
+                    className="absolute left-6 top-6 z-40 px-4 py-1.5 text-xs font-bold uppercase tracking-widest"
+                    style={{
+                      background: `${color}20`,
+                      border: `1px solid ${color}60`,
+                      color,
+                      backdropFilter: 'blur(8px)',
+                      boxShadow: `0 0 25px ${color}35`,
+                    }}
+                    animate={{
+                      y: [0, -6, 0],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  >
+                    {type}
+                  </motion.div>
+                </div>
+
+                {/* Content side */}
+                <motion.div
+                  variants={contentVariants}
+                  className={`relative z-10 flex flex-col justify-center p-10 ${
+                    i % 2 === 1 ? 'lg:order-1' : ''
+                  }`}
+                  style={{ background: 'rgba(255,255,255,0.02)' }}
+                >
+                  <div className="mb-4 flex flex-wrap items-center gap-3">
+                    <motion.span
+                      className="px-3 py-1 text-xs font-semibold"
                       style={{
-                        color: '#6b7fa3',
-                        border: '1px solid rgba(255,255,255,0.07)',
-                        background: 'rgba(255,255,255,0.02)',
+                        color,
+                        border: `1px solid ${color}40`,
+                        background: `${color}08`,
+                      }}
+                      whileHover={{
+                        scale: 1.08,
+                        backgroundColor: `${color}18`,
                       }}
                     >
                       {date}
+                    </motion.span>
+
+                    <span className="text-xs" style={{ color: '#3a4a5e' }}>
+                      {location}
                     </span>
                   </div>
 
-                  <p className="text-sm leading-relaxed mb-6" style={{ color: '#6b7fa3', lineHeight: 1.8 }}>
+                  <motion.h3
+                    className="mb-2 font-bold text-white"
+                    style={{
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontSize: '1.75rem',
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.2,
+                    }}
+                    whileHover={{
+                      x: 6,
+                      transition: { duration: 0.25 },
+                    }}
+                  >
+                    {title}
+                  </motion.h3>
+
+                  <p className="mb-5 text-sm font-semibold" style={{ color }}>
+                    {organization}
+                  </p>
+
+                  <p
+                    className="mb-8 text-sm leading-relaxed"
+                    style={{ color: '#6b7fa3', lineHeight: 1.85 }}
+                  >
                     {description}
                   </p>
 
                   <div className="flex flex-wrap gap-2">
-                    {highlights.map(h => (
-                      <span
+                    {highlights.map((h, index) => (
+                      <motion.span
                         key={h}
-                        className="text-xs px-3 py-1.5"
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          delay: 0.35 + index * 0.06,
+                          duration: 0.35,
+                        }}
+                        whileHover={{
+                          y: -4,
+                          scale: 1.06,
+                          backgroundColor: `${color}16`,
+                        }}
+                        className="px-3 py-1.5 text-xs font-medium"
                         style={{
-                          color: '#c9a84c',
-                          border: '1px solid rgba(201,168,76,0.25)',
-                          background: 'rgba(201,168,76,0.05)',
+                          color,
+                          border: `1px solid ${color}30`,
+                          background: `${color}08`,
+                          borderRadius: '6px',
                         }}
                       >
                         {h}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </motion.div>
+              </motion.div>
+            )
+          )}
         </div>
 
-        {/* Stats row */}
-        <div
-          className="grid sm:grid-cols-3 divide-x"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', divideColor: 'rgba(255,255,255,0.06)' }}
+        {/* Stats */}
+        <motion.div
+          className="mt-20 grid grid-cols-3"
+          style={{
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
+          }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           {[
-            { value: '4+', label: 'Major Projects' },
+            { value: '6+', label: 'Major Projects' },
             { value: '2+', label: 'Years Experience' },
             { value: '🏆', label: 'Award Winning' },
-          ].map(({ value, label }) => (
-            <div key={label} className="py-10 text-center" style={{ borderRight: '1px solid rgba(255,255,255,0.06)' }}>
-              <div
-                className="text-4xl font-bold mb-2"
-                style={{ color: '#c9a84c', fontFamily: "'Cormorant Garamond', serif", letterSpacing: '-0.02em' }}
+          ].map(({ value, label }, i) => (
+            <motion.div
+              key={label}
+              className="py-10 text-center"
+              style={{
+                borderRight:
+                  i < 2 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+              }}
+              whileHover={{
+                y: -6,
+                transition: { duration: 0.25 },
+              }}
+            >
+              <motion.div
+                className="mb-2 text-4xl font-bold"
+                style={{
+                  color: '#c9a84c',
+                  fontFamily: "'Cormorant Garamond', serif",
+                }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.45,
+                  delay: i * 0.08,
+                }}
               >
                 {value}
-              </div>
-              <p className="text-sm uppercase tracking-widest" style={{ color: '#4a5568', fontFamily: "'DM Sans', sans-serif" }}>
+              </motion.div>
+              <p
+                className="text-xs uppercase tracking-widest"
+                style={{ color: '#3a4a5e' }}
+              >
                 {label}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent)' }} />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent)',
+        }}
+      />
     </section>
   )
 }
