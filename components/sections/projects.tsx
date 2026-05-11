@@ -65,6 +65,16 @@ export function Projects() {
       link: null,
       live: false,
     },
+    {
+      index: '07',
+      title: 'Real-Time Amazon Sentiment Analysis',
+      description: 'Distributed Big Data pipeline for real-time sentiment analysis of Amazon reviews using Kafka, Spark Structured Streaming and Machine Learning. Reviews are streamed through Kafka, processed in parallel with Spark MLlib and visualized live in a Flask dashboard.',
+      technologies: ['Apache Kafka', 'PySpark', 'Spark MLlib', 'MongoDB', 'Docker', 'Flask'],
+      tags: ['#BigData', '#Spark', '#Kafka', '#MachineLearning', '#Streaming'],
+      image: '/projects/amazon-bigdata.png',
+      link: 'https://github.com/imadelmiri12/real-time-amazon-sentiment-analysis',
+      live: false,
+    },
   ]
 
   return (
