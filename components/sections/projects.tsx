@@ -26,7 +26,30 @@ export function Projects() {
       live: false,
     },
     {
-      index: '03',
+  index: '03',
+  title: 'Smart Energy Monitor — IoT & AI',
+  description: 'Real-time smart home energy monitoring platform using ESP32, MQTT, Node-RED, MongoDB and Isolation Forest anomaly detection.',
+  technologies: [
+    'ESP32',
+    'MQTT',
+    'Node-RED',
+    'MongoDB',
+    'Flask',
+    'Isolation Forest'
+  ],
+  tags: [
+    '#IoT',
+    '#MachineLearning',
+    '#MQTT',
+    '#NodeRED',
+    '#SmartHome'
+  ],
+  image: '/projects/smart-energy-monitor.png',
+  link: 'https://github.com/imadelmiri12/Smart-Energy-Monitor-IoT-AI-System',
+  live: false,
+},
+    {
+      index: '04',
       title: 'ML Analytics Platform',
       description: 'End-to-End ML web app with automated preprocessing, automatic problem-type detection and 10+ algorithm comparison with visualizations.',
       technologies: ['Python', 'Flask', 'Scikit-learn', 'React', 'Next.js'],
@@ -37,7 +60,7 @@ export function Projects() {
     },
     
     {
-      index: '04',
+      index: '05',
       title: 'Heritage AI - Artisanat Marocain',
       description: 'AI platform for automatic classification of Moroccan craft products for cultural heritage valorization. CNN model with 98% accuracy deployed in production.',
       technologies: ['Python', 'CNN', 'Transfer Learning', 'Flask', 'React.js'],
@@ -47,7 +70,7 @@ export function Projects() {
       live: true,
     },    
     {
-      index: '05',
+      index: '06',
       title: 'Incident Management System',
       description: 'Full-stack web app for managing incidents at TangerMED port with role-based access, incident workflows and dynamic dashboards. Built during PFE internship.',
       technologies: ['Angular', 'Java Spring Boot', 'MySQL'],
@@ -57,7 +80,7 @@ export function Projects() {
       live: false,
     },
     {
-      index: '06',
+      index: '07',
       title: 'Cybersecurity RAG Pipeline',
       description: 'RAG-based phishing detection architecture using semantic retrieval, BM25 search, Sentence-BERT embeddings and Mistral LLM integration.',
       technologies: ['Python', 'LangChain', 'FAISS', 'Sentence-BERT', 'Mistral'],
