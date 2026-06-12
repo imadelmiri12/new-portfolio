@@ -16,7 +16,17 @@ export function Projects() {
       live: false,
     },
     {
-      index: '02',
+  index: '02',
+  title: 'PhishGuard — Multilingual Phishing Detection',
+  description: 'RAG-based multilingual phishing detection system (EN/FR/AR) with hybrid FAISS+BM25+RRF retrieval, LLaMA-3.3-70B via Groq API, URL analysis module, and Flask web dashboard. Dataset: 3,038 custom entries across 4 channels.',
+  technologies: ['Python', 'Flask', 'FAISS', 'BM25', 'Sentence-BERT', 'LLaMA-3.3-70B', 'Groq API'],
+  tags: ['#RAG', '#LLM', '#Phishing', '#NLP', '#Cybersecurity', '#Multilingual'],
+  image: '/projects/phishguard.png',
+  link: 'https://github.com/begdouri-marwa/Phishing_Analysis_Project.git',
+  live: false,
+},
+    {
+      index: '03',
       title: 'Restaurant Allocation — Multi-Agent System',
       description: 'Distributed multi-agent restaurant allocation system using JADE with FIPA-ACL communication, deliberation strategies and adaptive reservation behaviors.',
       technologies: ['Java', 'JADE', 'Swing', 'FIPA-ACL'],
@@ -26,10 +36,10 @@ export function Projects() {
       live: false,
     },
     {
-  index: '03',
-  title: 'Smart Energy Monitor — IoT & AI',
-  description: 'Real-time smart home energy monitoring platform using ESP32, MQTT, Node-RED, MongoDB and Isolation Forest anomaly detection.',
-  technologies: [
+      index: '04',
+      title: 'Smart Energy Monitor — IoT & AI',
+      description: 'Real-time smart home energy monitoring platform using ESP32, MQTT, Node-RED, MongoDB and Isolation Forest anomaly detection.',
+      technologies: [
     'ESP32',
     'MQTT',
     'Node-RED',
@@ -49,7 +59,7 @@ export function Projects() {
   live: false,
 },
     {
-      index: '04',
+      index: '05',
       title: 'ML Analytics Platform',
       description: 'End-to-End ML web app with automated preprocessing, automatic problem-type detection and 10+ algorithm comparison with visualizations.',
       technologies: ['Python', 'Flask', 'Scikit-learn', 'React', 'Next.js'],
@@ -60,7 +70,7 @@ export function Projects() {
     },
     
     {
-      index: '05',
+      index: '06',
       title: 'Heritage AI - Artisanat Marocain',
       description: 'AI platform for automatic classification of Moroccan craft products for cultural heritage valorization. CNN model with 98% accuracy deployed in production.',
       technologies: ['Python', 'CNN', 'Transfer Learning', 'Flask', 'React.js'],
@@ -70,7 +80,7 @@ export function Projects() {
       live: true,
     },    
     {
-      index: '06',
+      index: '07',
       title: 'Incident Management System',
       description: 'Full-stack web app for managing incidents at TangerMED port with role-based access, incident workflows and dynamic dashboards. Built during PFE internship.',
       technologies: ['Angular', 'Java Spring Boot', 'MySQL'],
@@ -80,7 +90,7 @@ export function Projects() {
       live: false,
     },
     {
-      index: '07',
+      index: '08',
       title: 'Cybersecurity RAG Pipeline',
       description: 'RAG-based phishing detection architecture using semantic retrieval, BM25 search, Sentence-BERT embeddings and Mistral LLM integration.',
       technologies: ['Python', 'LangChain', 'FAISS', 'Sentence-BERT', 'Mistral'],
