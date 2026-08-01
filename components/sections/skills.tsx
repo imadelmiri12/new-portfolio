@@ -1,6 +1,5 @@
 'use client'
-import { SectionBackground } from './SectionBackground'
-import { motion } from 'framer-motion'
+import { Reveal } from '../ui/reveal'
 import {
   SiPython, SiReact, SiNextdotjs, SiAngular, SiFlask, SiSpringboot,
   SiPhp, SiTensorflow, SiKeras, SiScikitlearn, SiPandas, SiNumpy,
@@ -45,66 +44,58 @@ export function Skills() {
     <section
       id="skills"
       className="py-24 sm:py-36 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0d1526 0%, #0a0e1a 100%)', fontFamily: "'DM Sans', sans-serif" }}
+      style={{ background: 'linear-gradient(180deg, #0a0e16 0%, #05070c 100%)', fontFamily: "'DM Sans', sans-serif" }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)' }} />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(45,212,191,0.3), transparent)' }} />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-12 relative z-10">
-
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-        >
-          <div className="flex items-center gap-4 mb-5">
-            <div className="h-px w-10" style={{ background: '#c9a84c' }} />
-            <span className="text-xs font-semibold uppercase tracking-[0.35em]" style={{ color: '#c9a84c' }}>Expertise</span>
+        <Reveal>
+          <div className="mb-12">
+            <div className="flex items-center gap-4 mb-5">
+              <div className="h-px w-10" style={{ background: '#2dd4bf' }} />
+              <span className="text-xs font-semibold uppercase tracking-[0.35em]" style={{ color: '#2dd4bf' }}>Expertise</span>
+            </div>
+            <h2 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.02em', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+              Technologies
+            </h2>
+            <p className="text-base max-w-xl" style={{ color: '#6b7fa3', lineHeight: 1.8 }}>
+              {"I've worked with a wide range of technologies across different domains."}
+            </p>
           </div>
-          <h2 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.02em', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-            Technologies
-          </h2>
-          <p className="text-base max-w-xl" style={{ color: '#6b7fa3', lineHeight: 1.8 }}>
-            {"I've worked with a wide range of technologies across different domains."}
-          </p>
-        </motion.div>
+        </Reveal>
 
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-12">
           {techs.map(({ icon, name, color }, i) => (
-            <motion.div
-              key={name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, ease: 'easeOut', delay: i * 0.04 }}
-              className="flex flex-col items-center justify-center gap-3 p-5 transition-all duration-300 group cursor-default"
-              style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', aspectRatio: '1' }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = `${color}60`
-                e.currentTarget.style.background = `${color}10`
-                e.currentTarget.style.transform = 'translateY(-4px)'
-                e.currentTarget.style.boxShadow = `0 8px 24px ${color}20`
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
-                e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
-            >
-              <div style={{ color }} className="transition-transform duration-300 group-hover:scale-110">
-                {icon}
+            <Reveal key={name} variant="scale" delay={Math.min(i, 12) * 30}>
+              <div
+                className="flex flex-col items-center justify-center gap-3 p-5 transition-all duration-300 group cursor-default"
+                style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', aspectRatio: '1' }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = `${color}60`
+                  e.currentTarget.style.background = `${color}10`
+                  e.currentTarget.style.transform = 'translateY(-4px)'
+                  e.currentTarget.style.boxShadow = `0 8px 24px ${color}20`
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
+              >
+                <div style={{ color }} className="transition-transform duration-300 group-hover:scale-110">
+                  {icon}
+                </div>
+                <span className="text-xs font-medium text-center leading-tight" style={{ color: '#8a9bb5' }}>
+                  {name}
+                </span>
               </div>
-              <span className="text-xs font-medium text-center leading-tight" style={{ color: '#8a9bb5' }}>
-                {name}
-              </span>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent)' }} />
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(45,212,191,0.15), transparent)' }} />
     </section>
   )
 }

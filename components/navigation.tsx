@@ -1,14 +1,7 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-  type Variants,
-} from 'framer-motion'
 import { ChevronRight, Menu, Orbit, Sparkles, X, Zap } from 'lucide-react'
 
 const navLinks = [
@@ -20,88 +13,11 @@ const navLinks = [
   { href: '#contact', label: 'Contact' },
 ]
 
-const mobileMenuVariants: Variants = {
-  closed: {
-    opacity: 0,
-    y: -24,
-    scale: 0.94,
-    filter: 'blur(14px)',
-    transition: {
-      duration: 0.25,
-      ease: 'easeInOut',
-    },
-  },
-  open: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.5,
-      ease: [0.22, 1, 0.36, 1],
-      staggerChildren: 0.065,
-      delayChildren: 0.08,
-    },
-  },
-}
-
-const mobileItemVariants: Variants = {
-  closed: {
-    opacity: 0,
-    x: -22,
-    rotateX: -18,
-  },
-  open: {
-    opacity: 1,
-    x: 0,
-    rotateX: 0,
-    transition: {
-      duration: 0.38,
-      ease: 'easeOut',
-    },
-  },
-}
-
-const orbitVariants: Variants = {
-  animate: {
-    rotate: 360,
-    transition: {
-      duration: 10,
-      repeat: Infinity,
-      ease: 'linear',
-    },
-  },
-}
-
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('#hero')
   const [isScrolled, setIsScrolled] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
-
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 180, damping: 24 })
-  const springY = useSpring(mouseY, { stiffness: 180, damping: 24 })
-
-  const navStars = useMemo(
-    () =>
-      Array.from({ length: 18 }, (_, i) => ({
-        id: i,
-        left: `${4 + Math.random() * 92}%`,
-        top: `${18 + Math.random() * 66}%`,
-        delay: Math.random() * 3,
-        duration: 2.8 + Math.random() * 3,
-        size: 1.5 + Math.random() * 2.8,
-        color:
-          i % 3 === 0
-            ? 'rgba(201,168,76,0.75)'
-            : i % 3 === 1
-              ? 'rgba(123,167,188,0.65)'
-              : 'rgba(226,232,240,0.55)',
-      })),
-    []
-  )
 
   useEffect(() => {
     const handleScroll = () => {
@@ -137,135 +53,44 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    mouseX.set(event.clientX - rect.left)
-    mouseY.set(event.clientY - rect.top)
-  }
-
   const closeMenu = () => setIsOpen(false)
 
   return (
-    <motion.nav
-      initial={{ y: -90, opacity: 0, filter: 'blur(12px)' }}
-      animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-      onMouseMove={handleMouseMove}
-      className="sticky top-0 z-50 overflow-hidden"
+    <nav
+      className="sticky top-0 z-50 overflow-hidden animate-fade-in"
       style={{
         background: isScrolled
-          ? 'radial-gradient(circle at 12% 10%, rgba(201,168,76,0.12), transparent 32%), radial-gradient(circle at 82% 20%, rgba(123,167,188,0.11), transparent 38%), linear-gradient(135deg, rgba(7,11,21,0.9), rgba(10,14,26,0.82))'
-          : 'radial-gradient(circle at 12% 10%, rgba(201,168,76,0.11), transparent 32%), radial-gradient(circle at 82% 20%, rgba(123,167,188,0.1), transparent 38%), linear-gradient(135deg, rgba(7,11,21,0.7), rgba(13,21,38,0.58))',
-        backdropFilter: 'blur(28px) saturate(145%)',
-        WebkitBackdropFilter: 'blur(28px) saturate(145%)',
-        borderBottom: isScrolled
-          ? '1px solid rgba(201,168,76,0.26)'
-          : '1px solid rgba(201,168,76,0.1)',
-        boxShadow: isScrolled
-          ? '0 18px 70px rgba(0,0,0,0.34)'
-          : '0 0 0 rgba(0,0,0,0)',
+          ? 'radial-gradient(circle at 12% 10%, rgba(45,212,191,0.12), transparent 32%), radial-gradient(circle at 82% 20%, rgba(129,140,248,0.11), transparent 38%), linear-gradient(135deg, rgba(5,7,12,0.9), rgba(8,11,19,0.82))'
+          : 'radial-gradient(circle at 12% 10%, rgba(45,212,191,0.1), transparent 32%), radial-gradient(circle at 82% 20%, rgba(129,140,248,0.1), transparent 38%), linear-gradient(135deg, rgba(5,7,12,0.7), rgba(10,14,22,0.58))',
+        backdropFilter: 'blur(14px) saturate(130%)',
+        WebkitBackdropFilter: 'blur(14px) saturate(130%)',
+        borderBottom: isScrolled ? '1px solid rgba(45,212,191,0.24)' : '1px solid rgba(45,212,191,0.09)',
+        boxShadow: isScrolled ? '0 18px 70px rgba(0,0,0,0.34)' : '0 0 0 rgba(0,0,0,0)',
         fontFamily: "'DM Sans', sans-serif",
+        transition: 'background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease',
       }}
     >
-      {/* cursor-following nebula glow */}
-      <motion.div
-        className="pointer-events-none absolute h-52 w-52 rounded-full blur-3xl"
+      {/* decorative layers — all pure CSS, no per-frame JS */}
+      <div className="nav-stars pointer-events-none absolute inset-0 overflow-hidden opacity-70" />
+      <div className="spin-slow pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full" style={{ border: '1px solid rgba(45,212,191,0.09)' }} />
+      <div className="spin-slow-reverse pointer-events-none absolute -left-16 -bottom-32 h-64 w-64 rounded-full" style={{ border: '1px solid rgba(129,140,248,0.09)' }} />
+      <div
+        className="shooting-star pointer-events-none absolute top-2 h-px w-32 rotate-[18deg]"
         style={{
-          x: springX,
-          y: springY,
-          translateX: '-50%',
-          translateY: '-50%',
-          background:
-            'radial-gradient(circle, rgba(201,168,76,0.18), rgba(123,167,188,0.08), transparent 70%)',
+          background: 'linear-gradient(90deg, transparent, rgba(226,232,240,0.9), rgba(45,212,191,0.55), transparent)',
+          boxShadow: '0 0 18px rgba(45,212,191,0.45)',
         }}
       />
-
-      {/* small moving stars */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {navStars.map((star) => (
-          <motion.span
-            key={star.id}
-            className="absolute rounded-full"
-            style={{
-              left: star.left,
-              top: star.top,
-              width: star.size,
-              height: star.size,
-              background: star.color,
-              boxShadow: '0 0 12px rgba(201,168,76,0.45)',
-            }}
-            animate={{
-              y: [0, -10, 0],
-              opacity: [0.15, 0.9, 0.15],
-              scale: [0.75, 1.35, 0.75],
-            }}
-            transition={{
-              duration: star.duration,
-              delay: star.delay,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </div>
-
-      {/* orbit arcs */}
-      <motion.div
-        className="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full"
-        style={{
-          border: '1px solid rgba(201,168,76,0.09)',
-        }}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+      <div
+        className="shine-sweep pointer-events-none absolute bottom-0 left-0 h-px w-1/3"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(45,212,191,1), rgba(129,140,248,0.9), transparent)' }}
       />
-      <motion.div
-        className="pointer-events-none absolute -left-16 -bottom-32 h-64 w-64 rounded-full"
-        style={{
-          border: '1px solid rgba(123,167,188,0.09)',
-        }}
-        animate={{ rotate: -360 }}
-        transition={{ duration: 34, repeat: Infinity, ease: 'linear' }}
-      />
-
-      {/* shooting star line */}
-      <motion.div
-        className="pointer-events-none absolute top-2 h-px w-32 rotate-[18deg]"
-        style={{
-          background:
-            'linear-gradient(90deg, transparent, rgba(226,232,240,0.9), rgba(201,168,76,0.55), transparent)',
-          boxShadow: '0 0 18px rgba(201,168,76,0.45)',
-        }}
-        animate={{ x: ['-25vw', '125vw'], opacity: [0, 1, 0] }}
-        transition={{
-          duration: 3.8,
-          repeat: Infinity,
-          repeatDelay: 4,
-          ease: 'easeInOut',
-        }}
-      />
-
-      {/* animated shine line */}
-      <motion.div
-        className="pointer-events-none absolute bottom-0 left-0 h-px w-1/3"
-        style={{
-          background:
-            'linear-gradient(90deg, transparent, rgba(201,168,76,1), rgba(123,167,188,0.9), transparent)',
-        }}
-        animate={{ x: ['-125%', '330%'] }}
-        transition={{
-          duration: 4.5,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-      />
-
-      {/* scroll progress */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-[2px]"
+      <div
+        className="absolute bottom-0 left-0 h-[2px] transition-[width] duration-300 ease-out"
         style={{
           width: `${scrollProgress}%`,
-          background: 'linear-gradient(90deg, #c9a84c, #7ba7bc, #9b8ec4)',
-          boxShadow: '0 0 18px rgba(201,168,76,0.5)',
+          background: 'linear-gradient(90deg, #2dd4bf, #818cf8, #f472b6)',
+          boxShadow: '0 0 18px rgba(45,212,191,0.5)',
         }}
       />
 
@@ -273,78 +98,39 @@ export function Navigation() {
         <div className="flex min-h-16 items-center justify-between py-3">
           {/* Logo */}
           <Link href="/" className="group relative flex items-center gap-3" onClick={closeMenu}>
-            <motion.div
-              className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full text-sm font-black"
+            <div
+              className="lift-hover relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full text-sm font-black hover:scale-110 hover:-rotate-6"
               style={{
-                background:
-                  'radial-gradient(circle at 35% 25%, rgba(255,255,255,0.18), transparent 22%), linear-gradient(135deg, rgba(201,168,76,0.23), rgba(123,167,188,0.15))',
-                border: '1px solid rgba(201,168,76,0.5)',
-                color: '#c9a84c',
+                background: 'radial-gradient(circle at 35% 25%, rgba(255,255,255,0.18), transparent 22%), linear-gradient(135deg, rgba(45,212,191,0.23), rgba(129,140,248,0.15))',
+                border: '1px solid rgba(45,212,191,0.5)',
+                color: '#2dd4bf',
                 letterSpacing: '0.05em',
-                boxShadow: '0 0 28px rgba(201,168,76,0.16)',
+                boxShadow: '0 0 28px rgba(45,212,191,0.16)',
               }}
-              whileHover={{
-                scale: 1.1,
-                rotate: -5,
-                boxShadow: '0 0 42px rgba(201,168,76,0.38)',
-              }}
-              whileTap={{ scale: 0.94 }}
-              transition={{ duration: 0.25 }}
             >
-              <motion.span
-                variants={orbitVariants}
-                animate="animate"
-                className="absolute h-[180%] w-[180%]"
-                style={{
-                  background:
-                    'conic-gradient(from 0deg, transparent, rgba(201,168,76,0.7), transparent, rgba(123,167,188,0.5), transparent)',
-                }}
+              <span
+                className="spin-slow absolute h-[180%] w-[180%]"
+                style={{ background: 'conic-gradient(from 0deg, transparent, rgba(45,212,191,0.7), transparent, rgba(129,140,248,0.5), transparent)' }}
               />
-              <span className="absolute inset-[2px] rounded-full" style={{ background: '#070b15' }} />
-
-              <motion.span
-                className="absolute h-[72%] w-[130%] rounded-full"
-                style={{
-                  border: '1px solid rgba(201,168,76,0.36)',
-                  rotate: '-22deg',
-                }}
-                animate={{ rotate: ['-22deg', '338deg'] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+              <span className="absolute inset-[2px] rounded-full" style={{ background: '#05070c' }} />
+              <span
+                className="spin-slow absolute h-[72%] w-[130%] rounded-full"
+                style={{ border: '1px solid rgba(45,212,191,0.36)', rotate: '-22deg' }}
               />
-
-              <motion.span
-                className="relative z-10"
-                animate={{
-                  textShadow: [
-                    '0 0 0 rgba(201,168,76,0)',
-                    '0 0 16px rgba(201,168,76,0.65)',
-                    '0 0 0 rgba(201,168,76,0)',
-                  ],
-                }}
-                transition={{ duration: 2.6, repeat: Infinity }}
-              >
-                IE
-              </motion.span>
-            </motion.div>
+              <span className="relative z-10">IE</span>
+            </div>
 
             <div className="hidden sm:block">
-              <motion.span
-                className="block text-sm font-bold uppercase tracking-[0.22em]"
+              <span
+                className="block text-sm font-bold uppercase tracking-[0.22em] transition-colors duration-200 group-hover:text-[#2dd4bf]"
                 style={{ color: '#e2e8f0' }}
-                whileHover={{ color: '#c9a84c', x: 3 }}
-                transition={{ duration: 0.2 }}
               >
                 Imad Elmiri
-              </motion.span>
-              <motion.span
-                className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.32em]"
-                style={{ color: '#52647d' }}
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              >
+              </span>
+              <span className="pulse-soft flex items-center gap-1.5 text-[10px] uppercase tracking-[0.32em]" style={{ color: '#52647d' }}>
                 <Orbit size={10} />
-                Space portfolio
-              </motion.span>
+                Dev portfolio
+              </span>
             </div>
           </Link>
 
@@ -352,281 +138,145 @@ export function Navigation() {
           <div
             className="hidden items-center gap-2 rounded-full px-2 py-2 md:flex"
             style={{
-              background:
-                'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025))',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025))',
               border: '1px solid rgba(255,255,255,0.075)',
-              boxShadow:
-                'inset 0 1px 0 rgba(255,255,255,0.05), 0 18px 45px rgba(0,0,0,0.18)',
+              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05), 0 18px 45px rgba(0,0,0,0.18)',
             }}
           >
-            {navLinks.map((link, index) => {
+            {navLinks.map((link) => {
               const isActive = activeSection === link.href
 
               return (
-                <motion.a
+                <a
                   key={link.href}
                   href={link.href}
-                  className="relative overflow-hidden rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em]"
-                  style={{ color: isActive ? '#070b15' : '#7f91ad' }}
-                  initial={{ opacity: 0, y: -12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + index * 0.055, duration: 0.35 }}
-                  whileHover={{
-                    color: isActive ? '#070b15' : '#c9a84c',
-                    y: -3,
+                  className="group relative overflow-hidden rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-all duration-300"
+                  style={{
+                    color: isActive ? '#05070c' : '#7f91ad',
+                    background: isActive ? 'linear-gradient(135deg, #2dd4bf 0%, #5eead4 52%, #818cf8 130%)' : 'transparent',
+                    boxShadow: isActive ? '0 9px 32px rgba(45,212,191,0.32)' : 'none',
                   }}
-                  whileTap={{ scale: 0.95 }}
                 >
-                  {isActive && (
-                    <motion.span
-                      layoutId="active-nav-pill"
-                      className="absolute inset-0 rounded-full"
-                      style={{
-                        background:
-                          'linear-gradient(135deg, #c9a84c 0%, #e0bc6a 52%, #7ba7bc 130%)',
-                        boxShadow: '0 9px 32px rgba(201,168,76,0.32)',
-                      }}
-                      transition={{
-                        type: 'spring',
-                        stiffness: 420,
-                        damping: 32,
-                      }}
-                    />
-                  )}
-
                   {!isActive && (
-                    <motion.span
-                      className="absolute inset-0 rounded-full opacity-0"
-                      style={{
-                        background:
-                          'radial-gradient(circle at 50% 50%, rgba(201,168,76,0.14), transparent 70%)',
-                      }}
-                      whileHover={{ opacity: 1 }}
+                    <span
+                      className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      style={{ background: 'radial-gradient(circle at 50% 50%, rgba(45,212,191,0.14), transparent 70%)' }}
                     />
                   )}
-
-                  <motion.span
-                    className="absolute bottom-1 left-1/2 h-px w-0 -translate-x-1/2"
-                    style={{ background: '#c9a84c' }}
-                    whileHover={{ width: '55%' }}
-                    transition={{ duration: 0.25 }}
+                  <span
+                    className="absolute bottom-1 left-1/2 h-px w-0 -translate-x-1/2 transition-all duration-300 group-hover:w-[55%]"
+                    style={{ background: '#2dd4bf' }}
                   />
-
-                  <span className="relative z-10">{link.label}</span>
-                </motion.a>
+                  <span className="relative z-10 transition-colors duration-300 group-hover:text-[#2dd4bf]" style={{ color: isActive ? '#05070c' : undefined }}>
+                    {link.label}
+                  </span>
+                </a>
               )
             })}
           </div>
 
           {/* CTA */}
           <div className="hidden items-center gap-3 md:flex">
-            <motion.a
+            <a
               href="#contact"
-              className="group relative overflow-hidden rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em]"
+              className="shine-on-hover lift-hover group flex items-center gap-2 rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.18em] hover:scale-[1.045]"
               style={{
-                color: '#070b15',
-                background: '#c9a84c',
-                boxShadow: '0 10px 38px rgba(201,168,76,0.26)',
+                color: '#05070c',
+                background: '#2dd4bf',
+                boxShadow: '0 10px 38px rgba(45,212,191,0.26)',
               }}
-              whileHover={{
-                y: -4,
-                scale: 1.045,
-                boxShadow: '0 18px 55px rgba(201,168,76,0.44)',
-              }}
-              whileTap={{ scale: 0.96 }}
             >
-              <motion.span
-                className="absolute inset-0"
-                style={{
-                  background:
-                    'linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.42) 45%, transparent 65%)',
-                }}
-                animate={{ x: ['-135%', '135%'] }}
-                transition={{
-                  duration: 2.4,
-                  repeat: Infinity,
-                  repeatDelay: 0.8,
-                  ease: 'easeInOut',
-                }}
-              />
               <span className="relative z-10 flex items-center gap-2">
                 <Sparkles size={14} />
                 Hire Me
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-                >
-                  <ChevronRight size={14} />
-                </motion.span>
+                <ChevronRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
               </span>
-            </motion.a>
+            </a>
           </div>
 
           {/* Mobile menu button */}
-          <motion.button
+          <button
             onClick={() => setIsOpen((prev) => !prev)}
-            className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full md:hidden"
+            className="lift-hover relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full md:hidden hover:scale-105 active:scale-90"
             style={{
-              color: '#c9a84c',
-              background:
-                'radial-gradient(circle at 35% 25%, rgba(255,255,255,0.14), transparent 24%), rgba(201,168,76,0.08)',
-              border: '1px solid rgba(201,168,76,0.32)',
-              boxShadow: isOpen ? '0 0 35px rgba(201,168,76,0.24)' : 'none',
+              color: '#2dd4bf',
+              background: 'radial-gradient(circle at 35% 25%, rgba(255,255,255,0.14), transparent 24%), rgba(45,212,191,0.08)',
+              border: '1px solid rgba(45,212,191,0.32)',
+              boxShadow: isOpen ? '0 0 35px rgba(45,212,191,0.24)' : 'none',
             }}
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.05 }}
             aria-label="Toggle navigation menu"
           >
-            <AnimatePresence mode="wait">
-              {isOpen ? (
-                <motion.span
-                  key="x"
-                  className="relative z-10"
-                  initial={{ rotate: -120, opacity: 0, scale: 0.5 }}
-                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                  exit={{ rotate: 120, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.22 }}
-                >
-                  <X size={20} />
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="menu"
-                  className="relative z-10"
-                  initial={{ rotate: 120, opacity: 0, scale: 0.5 }}
-                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                  exit={{ rotate: -120, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.22 }}
-                >
-                  <Menu size={20} />
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </motion.button>
+            <span className="relative z-10 transition-transform duration-300" style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </span>
+          </button>
         </div>
 
         {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              variants={mobileMenuVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              className="md:hidden"
+        <div
+          className="overflow-hidden transition-[grid-template-rows] duration-[400ms] ease-out md:hidden"
+          style={{ display: 'grid', gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+        >
+          <div className="min-h-0 overflow-hidden">
+            <div
+              className="mb-5 overflow-hidden rounded-[2rem] p-3"
+              style={{
+                background: 'radial-gradient(circle at 10% 0%, rgba(45,212,191,0.13), transparent 38%), linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025))',
+                border: '1px solid rgba(45,212,191,0.16)',
+                boxShadow: '0 24px 70px rgba(0,0,0,0.34)',
+              }}
             >
-              <div
-                className="mb-5 overflow-hidden rounded-[2rem] p-3"
-                style={{
-                  background:
-                    'radial-gradient(circle at 10% 0%, rgba(201,168,76,0.13), transparent 38%), linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025))',
-                  border: '1px solid rgba(201,168,76,0.16)',
-                  boxShadow: '0 24px 70px rgba(0,0,0,0.34)',
-                  transformStyle: 'preserve-3d',
-                }}
-              >
-                <div
-                  className="mb-3 rounded-3xl px-4 py-4"
-                  style={{
-                    background: 'rgba(10,14,26,0.48)',
-                    border: '1px solid rgba(255,255,255,0.06)',
-                  }}
-                >
-                  <div className="flex items-center gap-2">
-                    <Zap size={14} style={{ color: '#c9a84c' }} />
-                    <span
-                      className="text-[11px] font-bold uppercase tracking-[0.22em]"
-                      style={{ color: '#c9a84c' }}
-                    >
-                      Space navigation
-                    </span>
-                  </div>
+              <div className="mb-3 rounded-3xl px-4 py-4" style={{ background: 'rgba(5,7,12,0.48)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="flex items-center gap-2">
+                  <Zap size={14} style={{ color: '#2dd4bf' }} />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.22em]" style={{ color: '#2dd4bf' }}>
+                    Navigation
+                  </span>
                 </div>
-
-                {navLinks.map((link) => {
-                  const isActive = activeSection === link.href
-
-                  return (
-                    <motion.a
-                      key={link.href}
-                      variants={mobileItemVariants}
-                      href={link.href}
-                      className="relative mb-1 flex items-center justify-between overflow-hidden rounded-2xl px-4 py-4 text-xs font-bold uppercase tracking-[0.2em]"
-                      style={{
-                        color: isActive ? '#070b15' : '#8a9bb5',
-                        background: isActive
-                          ? 'linear-gradient(135deg, #c9a84c, #e0bc6a)'
-                          : 'transparent',
-                      }}
-                      onClick={closeMenu}
-                      whileHover={{
-                        x: 8,
-                        color: isActive ? '#070b15' : '#c9a84c',
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      {!isActive && (
-                        <motion.span
-                          className="absolute inset-0 opacity-0"
-                          style={{
-                            background:
-                              'linear-gradient(90deg, rgba(201,168,76,0.09), transparent)',
-                          }}
-                          whileHover={{ opacity: 1 }}
-                        />
-                      )}
-
-                      <span className="relative z-10">{link.label}</span>
-
-                      <motion.span
-                        className="relative z-10 h-1.5 w-1.5 rounded-full"
-                        style={{
-                          background: isActive ? '#070b15' : '#c9a84c',
-                          opacity: isActive ? 1 : 0.45,
-                        }}
-                        animate={{
-                          scale: isActive ? [1, 1.7, 1] : 1,
-                          boxShadow: isActive
-                            ? [
-                                '0 0 0 rgba(10,14,26,0)',
-                                '0 0 14px rgba(10,14,26,0.45)',
-                                '0 0 0 rgba(10,14,26,0)',
-                              ]
-                            : '0 0 0 rgba(0,0,0,0)',
-                        }}
-                        transition={{ duration: 1.7, repeat: Infinity }}
-                      />
-                    </motion.a>
-                  )
-                })}
-
-                <motion.a
-                  variants={mobileItemVariants}
-                  href="#contact"
-                  className="mt-3 flex items-center justify-center gap-2 overflow-hidden rounded-2xl px-5 py-4 text-xs font-black uppercase tracking-[0.18em]"
-                  style={{
-                    color: '#070b15',
-                    background: 'linear-gradient(135deg, #c9a84c, #e0bc6a)',
-                    boxShadow: '0 16px 42px rgba(201,168,76,0.26)',
-                  }}
-                  onClick={closeMenu}
-                  whileTap={{ scale: 0.97 }}
-                  whileHover={{ y: -2 }}
-                >
-                  <Sparkles size={14} />
-                  Hire Me
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.1, repeat: Infinity, ease: 'easeInOut' }}
-                  >
-                    <ChevronRight size={14} />
-                  </motion.span>
-                </motion.a>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
+              {navLinks.map((link, index) => {
+                const isActive = activeSection === link.href
+
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="group relative mb-1 flex items-center justify-between overflow-hidden rounded-2xl px-4 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:translate-x-2"
+                    style={{
+                      color: isActive ? '#05070c' : '#8a9bb5',
+                      background: isActive ? 'linear-gradient(135deg, #2dd4bf, #5eead4)' : 'transparent',
+                      transitionDelay: isOpen ? `${index * 40}ms` : '0ms',
+                    }}
+                    onClick={closeMenu}
+                  >
+                    <span className="relative z-10">{link.label}</span>
+                    <span
+                      className={isActive ? 'pulse-soft relative z-10 h-1.5 w-1.5 rounded-full' : 'relative z-10 h-1.5 w-1.5 rounded-full opacity-45'}
+                      style={{ background: isActive ? '#05070c' : '#2dd4bf' }}
+                    />
+                  </a>
+                )
+              })}
+
+              <a
+                href="#contact"
+                className="shine-on-hover mt-3 flex items-center justify-center gap-2 overflow-hidden rounded-2xl px-5 py-4 text-xs font-black uppercase tracking-[0.18em] transition-transform duration-300 hover:-translate-y-0.5"
+                style={{
+                  color: '#05070c',
+                  background: 'linear-gradient(135deg, #2dd4bf, #5eead4)',
+                  boxShadow: '0 16px 42px rgba(45,212,191,0.26)',
+                }}
+                onClick={closeMenu}
+              >
+                <Sparkles size={14} />
+                Hire Me
+                <ChevronRight size={14} />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.nav>
+    </nav>
   )
 }

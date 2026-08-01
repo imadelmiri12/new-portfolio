@@ -1,54 +1,36 @@
 import { NextResponse } from 'next/server'
-import { existsSync } from 'fs'
+import { existsSync, readdirSync, readFileSync } from 'fs'
 import { join } from 'path'
 
 export async function GET() {
-  // Find which filename exists in public/
-  const filenames = ['Imad_Elmiri_CV.pdf', 'Imad_Elmiri.pdf', 'imad_elmiri.pdf', 'cv.pdf']
-  let foundFile = ''
+  const publicDir = join(process.cwd(), 'public')
 
-  for (const name of filenames) {
-    if (existsSync(join(process.cwd(), 'public', name))) {
-      foundFile = name
-      break
-    }
+  // Try the likely names first, but fall back to scanning public/ for any
+  // .pdf file. The repo's actual file is "Imad_ELMIRI.pdf" — on a
+  // case-sensitive filesystem (e.g. Vercel/Linux) a hardcoded guess like
+  // "Imad_Elmiri.pdf" silently fails to match it, which is what was making
+  // this 404 in production.
+  const preferredNames = ['Imad_Elmiri_CV.pdf', 'Imad_Elmiri.pdf', 'Imad_ELMIRI.pdf', 'imad_elmiri.pdf', 'cv.pdf']
+  let filename = preferredNames.find((name) => existsSync(join(publicDir, name)))
+
+  if (!filename) {
+    filename = readdirSync(publicDir).find((file) => file.toLowerCase().endsWith('.pdf'))
   }
 
-  if (!foundFile) {
+  if (!filename) {
     return NextResponse.json({ error: 'CV not found' }, { status: 404 })
   }
 
-  // Return HTML page with PDF embedded — bypasses Brave/Firefox download managers
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Imad Elmiri — CV</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; background: #0a0e1a; }
-    iframe {
-      width: 100%;
-      height: 100vh;
-      border: none;
-      display: block;
-    }
-  </style>
-</head>
-<body>
-  <iframe src="/${foundFile}#toolbar=1&navpanes=0&scrollbar=1" type="application/pdf">
-    <p style="color:white;text-align:center;padding:2rem;">
-      Your browser cannot display PDFs.
-      <a href="/${foundFile}" style="color:#c9a84c;">Click here to open it.</a>
-    </p>
-  </iframe>
-</body>
-</html>`
+  const fileBuffer = readFileSync(join(publicDir, filename))
 
-  return new NextResponse(html, {
+  return new NextResponse(fileBuffer, {
     headers: {
-      'Content-Type': 'text/html',
+      'Content-Type': 'application/pdf',
+      // "inline" (as opposed to "attachment") is what tells the browser to
+      // render the PDF in a tab instead of triggering a download — this was
+      // the actual cause of "View CV" downloading instead of opening.
+      'Content-Disposition': 'inline; filename="Imad_Elmiri_CV.pdf"',
+      'Cache-Control': 'public, max-age=3600',
     },
   })
 }
