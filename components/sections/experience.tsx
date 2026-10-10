@@ -6,6 +6,18 @@ export function Experience() {
   const experiences = [
     {
       type: 'Internship',
+      title: 'Internship — Smart Automation',
+      organization: 'Smart Automation',
+      date: 'Jul 2026 - Oct 2026 (3 months)',
+      location: 'Marketing & Sales Automation Platform',
+      description:
+        'Built a project combining LLMs and a Bayesian network to detect opportunities and risks from market and competitive-intelligence data. Full-stack application (Angular + FastAPI): network construction, LLM-driven discovery of consistency rules (automatically validated against real data), and surfacing of the factors explaining an identified risk or opportunity.',
+      highlights: ['LLM + Bayesian Network', 'Angular + FastAPI', 'Rule Discovery', 'Market Analysis', 'Ollama'],
+      image: '',
+      color: '#2dd4bf',
+    },
+    {
+      type: 'Internship',
       title: 'Full-Stack Developer Internship',
       organization: 'LANAI SARL - Tanger Med',
       date: 'Apr 2025 - Jun 2025',
@@ -77,13 +89,19 @@ export function Experience() {
                     style={{ background: `radial-gradient(circle at 50% 45%, ${color}20 0%, rgba(5,7,12,0) 55%)` }}
                   />
 
-                  <Image
-                    src={image}
-                    alt={title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="z-10 object-contain object-center transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {image ? (
+                    <Image
+                      src={image}
+                      alt={title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="z-10 object-contain object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center text-7xl font-bold" style={{ color: `${color}30`, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                      {organization}
+                    </div>
+                  )}
 
                   <div className="shine-sweep absolute inset-0 z-20" style={{ background: 'linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.13) 45%, transparent 65%)' }} />
 

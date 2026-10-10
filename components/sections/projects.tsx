@@ -6,6 +6,16 @@ export function Projects() {
   const projects = [
     {
       index: '01',
+      title: 'Bayesian Network Studio',
+      description: 'Bayesian-network consistency verification pipeline in 7 steps: data import, fuzzy variable labeling (3 membership shapes, adjustable overlap), Bayesian computation, case generation, LLM-based rules, classification and inverse analysis. FastAPI REST backend with isolated, time-limited computation and an Angular 18 UI with live curve preview; tested on networks up to 9 variables linked to a parent.',
+      technologies: ['Python', 'FastAPI', 'pandas', 'NetworkX', 'Angular 18', 'TypeScript', 'Tailwind CSS', 'Ollama'],
+      tags: ['#BayesianNetwork', '#LLM', '#FastAPI', '#Angular', '#FuzzyLogic'],
+      image: '',
+      link: 'https://github.com/imadelmiri12/bayesian-network-studio',
+      live: false,
+    },
+    {
+      index: '02',
       title: 'Real-Time Amazon Sentiment Analysis',
       description: 'Distributed Big Data pipeline for real-time sentiment analysis of Amazon reviews using Kafka, Spark Structured Streaming and Machine Learning. Reviews are streamed through Kafka, processed in parallel with Spark MLlib and visualized live in a Flask dashboard.',
       technologies: ['Apache Kafka', 'PySpark', 'Spark MLlib', 'MongoDB', 'Docker', 'Flask'],
@@ -15,7 +25,7 @@ export function Projects() {
       live: false,
     },
     {
-      index: '02',
+      index: '03',
       title: 'PhishGuard — Multilingual Phishing Detection',
       description: 'RAG-based multilingual phishing detection system (EN/FR/AR) with hybrid FAISS+BM25+RRF retrieval, LLaMA-3.3-70B via Groq API, URL analysis module, and Flask web dashboard. Dataset: 3,038 custom entries across 4 channels.',
       technologies: ['Python', 'Flask', 'FAISS', 'BM25', 'Sentence-BERT', 'LLaMA-3.3-70B', 'Groq API'],
@@ -25,7 +35,7 @@ export function Projects() {
       live: false,
     },
     {
-      index: '03',
+      index: '04',
       title: 'Restaurant Allocation — Multi-Agent System',
       description: 'Distributed multi-agent restaurant allocation system using JADE with FIPA-ACL communication, deliberation strategies and adaptive reservation behaviors.',
       technologies: ['Java', 'JADE', 'Swing', 'FIPA-ACL'],
@@ -35,7 +45,7 @@ export function Projects() {
       live: false,
     },
     {
-      index: '04',
+      index: '05',
       title: 'Smart Energy Monitor — IoT & AI',
       description: 'Real-time smart home energy monitoring platform using ESP32, MQTT, Node-RED, MongoDB and Isolation Forest anomaly detection.',
       technologies: ['ESP32', 'MQTT', 'Node-RED', 'MongoDB', 'Flask', 'Isolation Forest'],
@@ -45,7 +55,7 @@ export function Projects() {
       live: false,
     },
     {
-      index: '05',
+      index: '06',
       title: 'ML Analytics Platform',
       description: 'End-to-End ML web app with automated preprocessing, automatic problem-type detection and 10+ algorithm comparison with visualizations.',
       technologies: ['Python', 'Flask', 'Scikit-learn', 'React', 'Next.js'],
@@ -55,7 +65,7 @@ export function Projects() {
       live: false,
     },
     {
-      index: '06',
+      index: '07',
       title: 'Heritage AI - Artisanat Marocain',
       description: 'AI platform for automatic classification of Moroccan craft products for cultural heritage valorization. CNN model with 98% accuracy deployed in production.',
       technologies: ['Python', 'CNN', 'Transfer Learning', 'Flask', 'React.js'],
@@ -65,7 +75,7 @@ export function Projects() {
       live: true,
     },
     {
-      index: '07',
+      index: '08',
       title: 'Incident Management System',
       description: 'Full-stack web app for managing incidents at TangerMED port with role-based access, incident workflows and dynamic dashboards. Built during PFE internship.',
       technologies: ['Angular', 'Java Spring Boot', 'MySQL'],
@@ -75,7 +85,7 @@ export function Projects() {
       live: false,
     },
     {
-      index: '08',
+      index: '09',
       title: 'Cybersecurity RAG Pipeline',
       description: 'RAG-based phishing detection architecture using semantic retrieval, BM25 search, Sentence-BERT embeddings and Mistral LLM integration.',
       technologies: ['Python', 'LangChain', 'FAISS', 'Sentence-BERT', 'Mistral'],

@@ -1,0 +1,173 @@
+change 7 a \documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.4cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{tabularx}
+\usepackage{paracol}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\definecolor{accent}{HTML}{1A5276}
+\definecolor{darkgray}{HTML}{333333}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0em}{}[\vspace{-2pt}\titlerule\vspace{2pt}]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+\newcommand{\heading}[2]{\textbf{#1} \hfill \textit{#2}\\}
+\newcommand{\subheading}[2]{\textit{#1} \hfill \textit{#2}\\}
+\newcommand{\stackline}[1]{\textit{\small Stack : #1}\par}
+
+\setlist[itemize]{leftmargin=14pt, itemsep=0pt, topsep=2pt, parsep=0pt}
+
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
+\begin{document}
+
+% ---------- HEADER ----------
+\noindent
+\begin{minipage}[c]{0.78\textwidth}
+    {\Huge \textbf{ELMIRI IMAD}}\\[4pt]
+    {\large \'Etudiant en Master Intelligence Artificielle \& Data Science}\\[6pt]
+    \small
+    \faPhone\ +212 658 961 770 \quad
+    \faEnvelope\ \href{mailto:imadmiri12@gmail.com}{imadmiri12@gmail.com} \quad
+    \faMapMarker*\ Marrakech / Tanger, Maroc \\[3pt]
+    \faLinkedin\ \href{https://www.linkedin.com/in/imad-elmiri-495900335}{linkedin.com/in/imad-elmiri} \quad
+    \faGithub\ \href{https://github.com/imadelmiri12}{github.com/imadelmiri12} \quad
+    \faGlobe\ \href{https://imad-elmiri.vercel.app/}{imad-elmiri.vercel.app}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.18\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \clip (0,0) circle (1.7cm);
+        \node at (0,0) {\includegraphics[width=3.6cm]{carte ddetudiant.jpg}};
+    \end{tikzpicture}
+\end{minipage}
+
+\vspace{-4pt}
+
+% ---------- SUMMARY ----------
+\section*{Profil}
+\'Etudiant en deuxi\`eme ann\'ee de Master en Intelligence Artificielle \& Data Science \`a la FST Tanger, avec une exp\'erience pratique en d\'eveloppement full-stack et en pipelines ML de bout en bout. Capacit\'e prouv\'ee \`a livrer sous pression --- 2\`eme place au Hackathon WeCreate (EMSI $\times$ AIESEC, janvier 2025). Passionn\'e par la cr\'eation d'applications intelligentes \`a fort impact. \`A la recherche d'un stage PFE pour appliquer et d\'evelopper mes comp\'etences en IA et d\'eveloppement logiciel.
+
+% ---------- EXPERIENCE ----------
+\section*{Exp\'erience}
+
+\heading{Stage --- Smart Automation}{07/2026 -- 10/2026 (3 mois)}
+\textit{Plateforme d'Automatisation des Actions Marketing et Commerciales --- analyse du march\'e et de la concurrence}
+\begin{itemize}
+    \item D\'eveloppement d'un projet combinant LLM et r\'eseau bay\'esien pour la d\'etection d'opportunit\'es et de risques \`a partir des donn\'ees de march\'e et de veille concurrentielle
+    \item Application full-stack (Angular + FastAPI) : construction du r\'eseau, d\'ecouverte de r\`egles de coh\'erence par LLM (valid\'ees automatiquement contre les donn\'ees r\'eelles), et remont\'ee des facteurs expliquant un risque ou une opportunit\'e identifi\'ee
+\end{itemize}
+\stackline{Python, FastAPI, pandas, NetworkX, Angular, TypeScript, Ollama}
+
+\heading{Stagiaire D\'eveloppeur Full-Stack --- LANAI SARL, Tanger Med (PFE)}{04/2025 -- 06/2025}
+\textit{Marrakech, Maroc}
+\begin{itemize}
+    \item D\'eveloppement d'une application web full-stack de gestion des incidents avec Angular, Java Spring Boot et MySQL
+    \item Mise en place du contr\^ole d'acc\`es bas\'e sur les r\^oles, des workflows d'incidents et de tableaux de bord dynamiques
+\end{itemize}
+
+\heading{2\textsuperscript{\`eme} Place --- Hackathon WeCreate, EMSI Casablanca $\times$ AIESEC Maroc}{18--19 Jan 2025}
+\textit{Casablanca, Maroc}
+\begin{itemize}
+    \item D\'eveloppement d'une application FinTech pour la gestion financi\`ere des PME marocaines en 48h, incluant le suivi des d\'epenses et le reporting financier
+\end{itemize}
+
+% ---------- PROJECTS ----------
+\section*{Projets}
+
+\heading{Bayesian Network Studio --- V\'erification de coh\'erence par r\'eseau bay\'esien}{2026}
+\begin{itemize}
+    \item Pipeline complet en 7 \'etapes : import de donn\'ees, \'etiquetage flou des variables (3 formes d'appartenance, recouvrement r\'eglable), calcul bay\'esien, g\'en\'eration des cas, r\`egles par LLM, classification et analyse inverse
+    \item API REST (FastAPI) avec calcul isol\'e dans un processus s\'epar\'e et un d\'elai maximal ; interface Angular 18 avec aper\c{c}u des courbes en direct ; r\'eseaux test\'es jusqu'\`a 9 variables li\'ees \`a un parent
+    \item D\'ep\^ot document\'e (installation, d\'emonstration, d\'epannage) : \href{https://github.com/imadelmiri12/bayesian-network-studio}{github.com/imadelmiri12/bayesian-network-studio}
+\end{itemize}
+\stackline{Python, FastAPI, pandas, NetworkX, Angular 18, TypeScript, Tailwind CSS, Ollama}
+
+\vspace{4pt}
+\textbf{ML Analytics --- Application Web ML de Bout en Bout} \hfill \textit{Python, Flask, Scikit-learn, Pandas, React, Next.js, TypeScript, Tailwind}
+\begin{itemize}
+    \item Application ML compl\`ete : import CSV/Excel, pr\'etraitement automatis\'e, d\'etection automatique du type de probl\`eme (Classification / R\'egression / Clustering)
+    \item Prend en charge plus de 10 algorithmes ML avec comparaison automatique des mod\`eles, visualisations et export des r\'esultats
+\end{itemize}
+
+\textbf{Amazon Reviews --- Analyse de Sentiment en Temps R\'eel} \hfill \textit{Kafka, Spark Streaming, PySpark MLlib, MongoDB, Docker}
+\begin{itemize}
+    \item Pipeline Big Data de bout en bout pour l'analyse de sentiment des avis Amazon avec 85,72\% de pr\'ecision
+    \item Architecture de streaming en temps r\'eel avec Kafka, Spark et un tableau de bord Flask (modes en ligne et hors ligne)
+\end{itemize}
+
+\textbf{Syst\`eme de D\'etection de Phishing --- Pipeline RAG} \hfill \textit{Python, LangChain, FAISS, Sentence-BERT, Mistral, Flask}
+\begin{itemize}
+    \item Syst\`eme NLP bas\'e sur RAG pour d\'etecter les emails/SMS de phishing avec classification multi-niveaux du risque (faible/moyen/critique)
+    \item Construction d'un jeu de donn\'ees annot\'e personnalis\'e et int\'egration d'un pipeline de recherche BM25 + s\'emantique
+\end{itemize}
+
+\textbf{Smart Energy Monitor --- Syst\`eme IoT \& IA} \hfill \textit{ESP32, MQTT, Node-RED, MongoDB, Flask}
+\begin{itemize}
+    \item D\'eveloppement d'une plateforme de surveillance \'energ\'etique domestique en temps r\'eel avec ESP32, MQTT, Node-RED, MongoDB et Flask
+    \item Int\'egration de la d\'etection d'anomalies par Isolation Forest pour identifier les sch\'emas de consommation anormaux et g\'en\'erer des insights intelligents
+\end{itemize}
+
+\textbf{Artisanat Marocain --- Classification par Deep Learning} \hfill \textit{Python, CNN / Transfer Learning, Flask, React.js}
+\begin{itemize}
+    \item Classification et reconnaissance automatique de produits artisanaux marocains pour la valorisation du patrimoine culturel
+    \item Entra\^inement d'un mod\`ele CNN, expos\'e via une API REST Flask, connect\'e \`a un frontend React.js
+\end{itemize}
+
+\textbf{Allocation de Restaurants --- Syst\`eme Multi-Agents} \hfill \textit{Java, JADE, Swing}
+\begin{itemize}
+    \item D\'eveloppement d'un syst\`eme distribu\'e d'allocation de restaurants bas\'e sur JADE et la communication FIPA-ACL
+    \item Mise en \oe uvre de strat\'egies de d\'elib\'eration et de r\'eservation adaptative avec une interface de simulation Swing
+\end{itemize}
+
+\textbf{Optimisation d'Itin\'eraires --- Algorithme Red Fox Optimization} \hfill \textit{Python, M\'etaheuristiques, NumPy}
+\begin{itemize}
+    \item Impl\'ementation de l'algorithme m\'etaheuristique Red Fox Optimization (RFO) from scratch pour r\'esoudre le probl\`eme de tourn\'ees de v\'ehicules avec capacit\'e (CVRP)
+    \item Benchmark de la convergence et de la qualit\'e des solutions sur des instances standards CVRPLIB (A-n32-k5, A-n37-k6)
+\end{itemize}
+
+\textbf{Application Web de Gestion des Incidents} \hfill \textit{Angular, Java Spring Boot, MySQL}
+\begin{itemize}
+    \item Application full-stack avec contr\^ole d'acc\`es bas\'e sur les r\^oles et tableaux de bord dynamiques, d\'evelopp\'ee durant le PFE chez Tanger Med
+\end{itemize}
+
+% ---------- EDUCATION ----------
+\section*{Formation}
+
+\heading{Master en Intelligence Artificielle et Data Science --- Facult\'e des Sciences et Techniques, Tanger}{2025 -- Pr\'esent}
+
+\heading{Licence en Syst\`emes Informatiques R\'epartis (SIR) --- Facult\'e des Sciences et Techniques, Gu\'eliz}{2024 -- 2025}
+\textit{Marrakech, Maroc}
+
+\heading{DEUST MIPC --- Math\'ematiques, Informatique, Physique \& Chimie}{2021 -- 2024}
+
+% ---------- SKILLS ----------
+\section*{Comp\'etences}
+\begin{itemize}
+    \item \textbf{Machine Learning \& Deep Learning :} Scikit-learn, TensorFlow, Keras, CNN, Transfer Learning
+    \item \textbf{Analyse \& Visualisation de Donn\'ees :} Pandas, NumPy, Matplotlib, Seaborn, Power BI
+    \item \textbf{Big Data \& Ing\'enierie des Donn\'ees :} Spark, Kafka, Hadoop/HDFS, Airflow
+    \item \textbf{Bases de Donn\'ees \& Infrastructure :} MySQL, SQL Server, MongoDB, UML
+    \item \textbf{Langages de Programmation :} Python, Java, C++, C
+    \item \textbf{D\'eveloppement Web :} React, Next.js, Angular, FastAPI, Flask, Spring Boot
+    \item \textbf{IoT :} Node-RED, Arduino, MQTT, Cisco Packet Tracer
+    \item \textbf{IA \& Optimisation :} Algorithmes G\'en\'etiques, M\'etaheuristiques, Syst\`emes Multi-Agents, Data Mining, NLP, R\'eseaux Bay\'esiens, LLM
+\end{itemize}
+
+% ---------- LANGUAGES ----------
+\section*{Langues}
+\textbf{Arabe :} Courant \quad\quad \textbf{Anglais :} Interm\'ediaire \quad\quad \textbf{Fran\c{c}ais :} Interm\'ediaire
+
+\end{document}
