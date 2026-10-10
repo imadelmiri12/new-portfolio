@@ -6,7 +6,7 @@ export function Experience() {
   const experiences = [
     {
       type: 'Internship',
-      title: 'Internship — Smart Automation',
+      title: 'AI Intern — Smart Automation (PFA)',
       organization: 'Smart Automation',
       date: 'Jul 2026 - Oct 2026 (3 months)',
       location: 'Marketing & Sales Automation Platform',
