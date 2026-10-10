@@ -10,7 +10,7 @@ export function Projects() {
       description: 'Bayesian-network consistency verification pipeline in 7 steps: data import, fuzzy variable labeling (3 membership shapes, adjustable overlap), Bayesian computation, case generation, LLM-based rules, classification and inverse analysis. FastAPI REST backend with isolated, time-limited computation and an Angular 18 UI with live curve preview; tested on networks up to 9 variables linked to a parent.',
       technologies: ['Python', 'FastAPI', 'pandas', 'NetworkX', 'Angular 18', 'TypeScript', 'Tailwind CSS', 'Ollama'],
       tags: ['#BayesianNetwork', '#LLM', '#FastAPI', '#Angular', '#FuzzyLogic'],
-      image: '',
+      image: '/projects/bayesian-network-studio.png',
       link: 'https://github.com/imadelmiri12/bayesian-network-studio',
       live: false,
     },
