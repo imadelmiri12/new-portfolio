@@ -146,7 +146,7 @@ export function Contact() {
               >
                 <p className="text-xs font-black uppercase tracking-[0.28em]" style={{ color: '#2dd4bf' }}>Status</p>
                 <p className="mt-2 text-sm leading-7" style={{ color: '#8a9bb5' }}>
-                  Available for PFA internship, freelance work, and collaboration.
+                  Available for PFE internship, freelance work, and collaboration.
                 </p>
               </div>
             </Reveal>

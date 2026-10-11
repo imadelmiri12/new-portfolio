@@ -20,9 +20,9 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: 'Imad Elmiri - Full-Stack Developer & AI Engineer',
   description:
-    'Portfolio of Imad Elmiri — Full-Stack Developer and AI/Data Science student at FSTT Tanger. Seeking PFA internship. Specialized in React, Next.js, Python, Machine Learning and Deep Learning.',
+    'Portfolio of Imad Elmiri — Full-Stack Developer and AI/Data Science student at FSTT Tanger. Seeking PFE internship. Specialized in React, Next.js, Python, Machine Learning and Deep Learning.',
   keywords:
-    'Imad Elmiri, Full-Stack Developer, React, Next.js, Python, AI, Machine Learning, Deep Learning, CNN, Data Science, FSTT Tanger, PFA, Stage, Portfolio, Morocco',
+    'Imad Elmiri, Full-Stack Developer, React, Next.js, Python, AI, Machine Learning, Deep Learning, CNN, Data Science, FSTT Tanger, PFE, Stage, Portfolio, Morocco',
   authors: [{ name: 'Imad Elmiri', url: 'https://github.com/imadelmiri12' }],
   creator: 'Imad Elmiri',
 
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: 'Imad Elmiri — Portfolio',
     title: 'Imad Elmiri - Full-Stack Developer & AI Engineer',
     description:
-      'Full-Stack Developer & AI/Data Science student seeking PFA internship. Projects in React, Next.js, Python, ML and Deep Learning.',
+      'Full-Stack Developer & AI/Data Science student seeking PFE internship. Projects in React, Next.js, Python, ML and Deep Learning.',
     images: [
       {
         url: '/profile.jpg',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Imad Elmiri - Full-Stack Developer & AI Engineer',
     description:
-      'Full-Stack Developer & AI/Data Science student seeking PFA internship.',
+      'Full-Stack Developer & AI/Data Science student seeking PFE internship.',
     images: ['/profile.jpg'],
   },
 
